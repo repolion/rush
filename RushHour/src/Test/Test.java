@@ -17,6 +17,7 @@ public class Test {
         
         System.out.println(posAtt);
         System.out.println(pos2);
+        System.out.println("test");
     }
 
 }
