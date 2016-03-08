@@ -66,16 +66,15 @@ public class Position {
             case DOWN:
                 tempRow += 1;
                 break;
-            default:
-                break;
         }
         Position pos = new Position(tempRow, tempColumn);
         return pos;
     }
-/**
- * @param position
- * @return true if the parameters of the two positions are equal
- */
+
+    /**
+     * @param position
+     * @return true if the parameters of the two positions are equal
+     */
     public boolean equals(Position position) {
         boolean equal = false;
         if (this.getRow() == position.getRow() && this.getColumn() == position.getColumn()) {
