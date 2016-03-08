@@ -13,7 +13,7 @@ public class Position {
     //Constructeur
     /**
      * @param row
-     * @param column 
+     * @param column
      */
     public Position(int row, int column) {  //construit une Position avec les numéros de ligne et de colonne en paramètre
         this.row = row;
@@ -72,9 +72,16 @@ public class Position {
         Position pos = new Position(tempRow, tempColumn);
         return pos;
     }
-
-    void compareTo(Position posAtt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+/**
+ * @param position
+ * @return true if the parameters of the two positions are equal
+ */
+    public boolean equals(Position position) {
+        boolean equal = false;
+        if (this.getRow() == position.getRow() && this.getColumn() == position.getColumn()) {
+            equal = true;
+        }
+        return equal;
     }
 
 }
