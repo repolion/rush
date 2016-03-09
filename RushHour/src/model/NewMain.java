@@ -24,7 +24,6 @@ public class NewMain {
         
           Car car = new Car('d', 1, HORIZONTAL,pos2);
         
-        car.move(Direction.UP);
-        System.out.println(car.toString());
+      
     }
 }

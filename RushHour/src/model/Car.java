@@ -76,7 +76,7 @@ class Car  {
         return ("La voiture " + this.id + " de taille " + this.size + " ayant une orientation " + this.orientation + " se trouve à la position (" + this.currentPosition.getRow() + " , " + this.currentPosition.getColumn() + ")");
     }
 
-    public void move(Direction direction) {
+  /*  public void move(Direction direction) {
 
         switch (direction) {
             case LEFT:
@@ -96,5 +96,5 @@ class Car  {
                 break;
         }
     }
-
+*/
 }
