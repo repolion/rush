@@ -4,7 +4,7 @@ package model;
  *
  * @author Cordier Olivier
  */
-public class Position {
+ public class Position {
 
     //Attributs
     private final int row;        // pas de restrictions sur cet attribut (peut être grand et même négatif)
