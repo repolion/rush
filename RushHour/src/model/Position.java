@@ -4,7 +4,7 @@ package model;
  *
  * @author Cordier Olivier
  */
- public class Position {
+public class Position {
 
     //Attributs
     private final int row;        // pas de restrictions sur cet attribut (peut être grand et même négatif)
@@ -15,7 +15,8 @@ package model;
      * @param row
      * @param column
      */
-    public Position(int row, int column) {  //construit une Position avec les numéros de ligne et de colonne en paramètre
+    //construit une Position avec les numéros de ligne et de colonne en paramètre
+    public Position(int row, int column) {
         this.row = row;
         this.column = column;
     }
@@ -49,6 +50,8 @@ package model;
      * @return a new position representing the position adjacent to the current
      * position
      */
+    /* Retourne une nouvelle position à côté de la currentPosition
+     en fonction de la direction donnée en paramètre*/
     public Position getPosition(Direction direction) {
         int tempRow = this.row;
         int tempColumn = this.column;

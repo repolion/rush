@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Cordier Olivier
@@ -7,14 +10,13 @@ package model;
 public class Car {
 
     //Attributs
-    private char id;                        
+    private char id;
     private int size;
     private Orientation orientation;
     private Position currentPosition;
 
     //Constructeur
     /**
-     * @param id
      * @param id
      * @param size
      * @param orientation
@@ -29,7 +31,7 @@ public class Car {
         this.id = id;
         this.size = size;
         this.orientation = orientation;
-        this.currentPosition=position;
+        this.currentPosition = position;
     }
 
     //Accesseurs
@@ -62,11 +64,13 @@ public class Car {
      */
     @Override
     public String toString() {
-        return "la voiture "+this.id+" de taille "+this.size+" d'orientation "+this.orientation+" est en position"+this.currentPosition;
+        return "la voiture " + this.id + " de taille " + this.size + " d'orientation " + this.orientation + " est en position" + this.currentPosition;
     }
+
     /**
      * Test the position of the car and if the mouvement is allowed, move it.
-     * @param direction 
+     *
+     * @param direction
      */
     public void move(Direction direction) {
         switch (direction) {
@@ -95,5 +99,23 @@ public class Car {
         this.currentPosition = this.currentPosition.getPosition(direction);
 
     }
-    
+
+    List<Position> getPositions() {
+        List<Position> positions = new ArrayList<>();
+        Position temp = this.currentPosition;
+        if (this.orientation == model.Orientation.HORIZONTAL) {
+            for (int i = 1; i <= size; ++i) {
+                positions.add(temp);
+                temp = temp.getPosition(model.Direction.RIGHT);
+            }
+        } else {
+            for (int i = 1; i <= size; ++i) {
+                positions.add(temp);
+                temp = temp.getPosition(model.Direction.DOWN);
+            }
+
+        }
+        return positions;
+
+    }
 }

@@ -5,7 +5,8 @@
  */
 package model;
 
-import static model.Orientation.HORIZONTAL;
+import java.util.List;
+
 
 /**
  *
@@ -15,7 +16,7 @@ public class NewMain {
 
     public static void main(String[] args) {
         Position pos=new Position(1,2);
-        Car car=new Car('d',2,HORIZONTAL,pos);
-           
+        Car car=new Car('d',2,model.Orientation.VERTICAL,pos);
+        System.out.println(car.getPositions());
     }
 }

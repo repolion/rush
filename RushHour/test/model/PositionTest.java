@@ -65,4 +65,5 @@ public class PositionTest {
         Position pos2 = pos.getPosition(Direction.UP);
         Assert.assertTrue(posAtt.equals(pos2));
     }
+
 }
