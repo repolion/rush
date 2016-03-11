@@ -100,7 +100,7 @@ public class Car {
 
     }
 
-    List<Position> getPositions() {
+    public List<Position> getPositions() {
         List<Position> positions = new ArrayList<>();
         Position temp = this.currentPosition;
         if (this.orientation == model.Orientation.HORIZONTAL) {
@@ -117,5 +117,12 @@ public class Car {
         }
         return positions;
 
+    }
+    public boolean equalsName(Car car) {
+        boolean equal = false;
+        if (this.getId() == car.getId()) {
+            equal = true;
+        }
+        return equal;
     }
 }

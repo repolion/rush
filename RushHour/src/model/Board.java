@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 /**
  *
  * @author Cordier Olivier
@@ -32,16 +34,55 @@ public class Board {
     public Position getExit() {
         return this.exit;
     }
-    public int getHeight(){
+
+    public int getHeight() {
         return this.grid.length;
     }
-    public int getWidth(){
+
+    public int getWidth() {
         return this.grid[0].length;
     }
-    
+
     //Autres méthodes
-    
-    public Car getCarAt(Position pos){
+    public Car getCarAt(Position pos) {
         return grid[pos.getRow()][pos.getColumn()];
     }
+
+    //retourne vrai si toutes les palces de car sont sur le board et sont libres
+    public boolean canPut(Car car) {
+        List<Position> posCar = car.getPositions(); // posCar est une liste des positions d'un car
+        boolean parkingInBoard = true;
+        boolean parkingFree = true;
+        int i = 0;
+        while (i < posCar.size() && parkingInBoard == true) {
+
+            if (posCar.get(i).getRow() < 0 || posCar.get(i).getColumn() < 0
+                    || posCar.get(i).getColumn() >= this.getWidth()
+                    || posCar.get(i).getRow() >= this.getHeight()) {
+
+                parkingInBoard = false;
+            }
+            ++i;
+        }
+        i = 0;
+        while (i < posCar.size() && parkingInBoard == true && parkingFree) {
+            if (this.grid[posCar.get(i).getRow()][posCar.get(i).getColumn()] != null) {
+                parkingFree = false;
+            }
+            ++i;
+        }
+        return parkingInBoard && parkingFree;
+    }
+
+    //A vérifier!!!!!
+    public void putCar(Car car) {
+        List<Position> posCar = car.getPositions();
+        int i = 0;
+        while (i < posCar.size()) {
+            this.grid[posCar.get(i).getRow()][posCar.get(i).getColumn()] = car;
+         ++i;   
+        }
+        
+    }
+
 }

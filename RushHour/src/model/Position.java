@@ -7,8 +7,8 @@ package model;
 public class Position {
 
     //Attributs
-    private final int row;        // pas de restrictions sur cet attribut (peut être grand et même négatif)
-    private final int column;     // pas de restrictions sur cet attribut (peut être grand et même négatif)
+    private int row;        // pas de restrictions sur cet attribut (peut être grand et même négatif)
+    private int column;     // pas de restrictions sur cet attribut (peut être grand et même négatif)
 
     //Constructeur
     /**
