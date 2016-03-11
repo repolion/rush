@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
  *
- * @author Liongeek
+ * @author Cordier Olivier
  */
 public class PositionTest {
 
