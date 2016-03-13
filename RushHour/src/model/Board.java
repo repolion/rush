@@ -66,23 +66,98 @@ public class Board {
         }
         i = 0;
         while (i < posCar.size() && parkingInBoard == true && parkingFree) {
-            if (this.grid[posCar.get(i).getRow()][posCar.get(i).getColumn()] != null) {
-                parkingFree = false;
-            }
+            parkingFree = this.isFree(posCar.get(i));
             ++i;
         }
         return parkingInBoard && parkingFree;
     }
 
-    //A vérifier!!!!!
+    // place un objet de type Car sur le plateau
     public void putCar(Car car) {
         List<Position> posCar = car.getPositions();
         int i = 0;
         while (i < posCar.size()) {
             this.grid[posCar.get(i).getRow()][posCar.get(i).getColumn()] = car;
-         ++i;   
+            ++i;
         }
-        
+
     }
 
+    //méthode qui retire une voiture du plateau de jeu
+    public void remove(Car car) {
+        List<Position> posCar = car.getPositions();
+        int i = 0;
+        while (i < posCar.size()) {
+            this.grid[posCar.get(i).getRow()][posCar.get(i).getColumn()] = null;
+            ++i;
+        }
+    }
+
+    /*méthode qui recherche sur le plateau une voiture et retourne une voiture 
+     en fontion de son id ou null si elle n'est pas trouvée */
+    public Car getCar(char id) {
+        int i = 0;
+        int j = 0;
+        while (i < this.getHeight()) {
+            while (j < this.getWidth()) {
+                if (this.grid[i][j] != null) {
+                    if (this.grid[i][j].getId() == id) {
+                        return this.grid[i][j];
+                    }
+                }
+                ++j;
+            }
+            j = 0;
+            ++i;
+        }
+        return null;
+    }
+
+    public boolean canMove(Car car, Direction direction) {
+        List<Position> listePositions = car.getPositions();
+        boolean peutBouger = false;
+        Position positionExt;
+        Position positionTest;
+
+        switch (direction) {                    //isOnTheBoard(Position position, Board board)
+            case LEFT:                          //isFree(position)
+            case UP:
+                positionExt = listePositions.get(0);
+                positionTest = positionExt.getPosition(direction);
+                if (this.isOnTheBoard(positionTest) == true && this.isFree(positionTest)) {
+                    peutBouger = true;
+                }
+                break;
+
+            case RIGHT:
+            case DOWN:
+                positionExt = listePositions.get(listePositions.size() - 1);
+                positionTest = positionExt.getPosition(direction);
+                if (this.isOnTheBoard(positionTest) == true && this.isFree(positionTest)) {
+                    peutBouger = true;
+                }
+                break;
+
+        }
+        return peutBouger;
+    }
+
+    public boolean isOnTheBoard(Position position) {
+        boolean isOnTheBoard = false;
+        if (position.getRow() >= 0 && position.getRow() < this.getHeight()) {
+            if (position.getColumn() >= 0 && position.getColumn() < this.getWidth()) {
+                isOnTheBoard = true;
+            }
+
+        }
+        return isOnTheBoard;
+    }
+
+    public boolean isFree(Position position) {
+        boolean parkingFree = false;
+        if (this.grid[position.getRow()][position.getColumn()] == null) {
+            parkingFree = true;
+        }
+        return parkingFree;
+    }
 }

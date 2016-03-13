@@ -118,11 +118,13 @@ public class Car {
         return positions;
 
     }
+
     public boolean equalsName(Car car) {
         boolean equal = false;
-        if (this.getId() == car.getId()) {
+        if (this != null && car != null && this.getId() == car.getId()) {
             equal = true;
         }
         return equal;
     }
+
 }

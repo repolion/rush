@@ -146,8 +146,6 @@ public class BoardTest {
     }
     
     //test methode getCarAt()
-    
-   /*
     @Test
     public void testGetCarAt(){
         
@@ -157,7 +155,102 @@ public class BoardTest {
          Car car2=plateau.getCarAt(new Position(3,5));
          Assert.assertTrue(car1.equalsName(car2));
     }
-    */
+   
+    @Test
+    public void getCar1(){
+      Car car1=new Car('1',3,model.Orientation.VERTICAL,new Position(3,5));
+      Car car2;
+        Board plateau=new Board(6,6,new Position(5,5));
+        plateau.putCar(car1);
+            car2=plateau.getCar('1');  
+        Assert.assertTrue(car1.equalsName(car2));
+        
+    }
+    @Test
+    public void getCar2(){
+        boolean estNull=false;
+      Car car2;
+        Board plateau=new Board(6,6,new Position(5,5));
+            car2=plateau.getCar('1'); 
+            if(car2 == null){
+                estNull=true;
+            } 
+        Assert.assertTrue(estNull);
+        
+    }
     
+    @Test
+    public void canMove1(){
+      Car car1=new Car('1',3,model.Orientation.HORIZONTAL,new Position(0,0));
+      Car car2=new Car('2',2,model.Orientation.VERTICAL,new Position(0,3));
+        Board plateau=new Board(6,6,new Position(2,5));
+        plateau.putCar(car1);
+        plateau.putCar(car2);
+        Assert.assertFalse(plateau.canMove(car1,model.Direction.RIGHT));
+        
+    }
     
+    @Test
+    public void canMove2(){
+      Car car1=new Car('1',3,model.Orientation.HORIZONTAL,new Position(0,0));
+      Board plateau=new Board(6,6,new Position(2,5));
+        plateau.putCar(car1);
+        Assert.assertTrue(plateau.canMove(car1,model.Direction.RIGHT));
+    }
+    @Test
+    public void canMove3(){
+      Car car1=new Car('1',3,model.Orientation.VERTICAL,new Position(0,0));
+      Board plateau=new Board(6,6,new Position(2,5));
+        plateau.putCar(car1);
+        Assert.assertFalse(plateau.canMove(car1,model.Direction.UP));
+    }
+    @Test
+    public void canMove4(){
+      Car car1=new Car('1',3,model.Orientation.VERTICAL,new Position(0,0));
+      Board plateau=new Board(6,6,new Position(2,5));
+        plateau.putCar(car1);
+        Assert.assertTrue(plateau.canMove(car1,model.Direction.DOWN));
+    }
+    @Test
+    public void canMove5(){
+      Car car1=new Car('1',2,model.Orientation.HORIZONTAL,new Position(0,4));
+      Board plateau=new Board(6,6,new Position(2,5));
+        plateau.putCar(car1);
+        Assert.assertFalse(plateau.canMove(car1,model.Direction.RIGHT));
+    }
+    @Test
+    public void canMove6(){
+      Car car1=new Car('1',2,model.Orientation.HORIZONTAL,new Position(0,4));
+      Board plateau=new Board(6,6,new Position(2,5));
+        plateau.putCar(car1);
+        Assert.assertTrue(plateau.canMove(car1,model.Direction.LEFT));
+    }
+    public void canMove7(){
+      Car car1=new Car('1',2,model.Orientation.VERTICAL,new Position(2,3));
+      Car car2=new Car('2',2,model.Orientation.HORIZONTAL,new Position(1,2));
+      Car car3=new Car('3',2,model.Orientation.HORIZONTAL,new Position(4,2));
+      Board plateau=new Board(6,6,new Position(2,5));
+        plateau.putCar(car1);
+        Assert.assertFalse(plateau.canMove(car1,model.Direction.UP));
+    }
+    public void canMove8(){
+      Car car1=new Car('1',2,model.Orientation.VERTICAL,new Position(2,3));
+      Car car2=new Car('2',2,model.Orientation.HORIZONTAL,new Position(1,2));
+      Car car3=new Car('3',2,model.Orientation.HORIZONTAL,new Position(4,2));
+      Board plateau=new Board(6,6,new Position(2,5));
+        plateau.putCar(car1);
+        Assert.assertFalse(plateau.canMove(car1,model.Direction.DOWN));
+    }
+    public void canMove9(){
+      Car car1=new Car('1',2,model.Orientation.VERTICAL,new Position(2,3));
+        Board plateau=new Board(6,6,new Position(2,5));
+        plateau.putCar(car1);
+        Assert.assertTrue(plateau.canMove(car1,model.Direction.UP));
+    }
+    public void canMove10(){
+      Car car1=new Car('1',2,model.Orientation.VERTICAL,new Position(2,3));
+        Board plateau=new Board(6,6,new Position(2,5));
+        plateau.putCar(car1);
+        Assert.assertTrue(plateau.canMove(car1,model.Direction.DOWN));
+    }
 }
