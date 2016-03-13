@@ -23,8 +23,7 @@ public class Car {
      * @param position
      */
     public Car(char id, int size, Orientation orientation, Position position) {
-
-        if (size <= 0) {
+         if (size <= 0) {
             throw new IllegalArgumentException("taille invalide! ");
         }
 
