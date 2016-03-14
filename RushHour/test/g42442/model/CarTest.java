@@ -1,5 +1,7 @@
-package model;
+package g42442.model;
 
+import g42442.model.Car;
+import g42442.model.Position;
 import org.junit.Test;
 
 /**
@@ -10,8 +12,8 @@ public class CarTest {
 
     //Décalarations et assignations de positions et Orientations pour Tests
     Position positionOk = new Position(1, 1);
-    Car horOk = new Car('a', 1, model.Orientation.HORIZONTAL, positionOk);
-    Car verOk = new Car('b', 1, model.Orientation.VERTICAL, positionOk);
+    Car horOk = new Car('a', 1, g42442.model.Orientation.HORIZONTAL, positionOk);
+    Car verOk = new Car('b', 1, g42442.model.Orientation.VERTICAL, positionOk);
 
     /**
      * Test the getters, of class Car.
@@ -40,21 +42,21 @@ public class CarTest {
     //test le déclenchement de l'exception si la taille = 0
     @Test(expected = IllegalArgumentException.class)
     public void testSize1() {
-        Car zeroCar = new Car('c', 0, model.Orientation.HORIZONTAL, positionOk);
-        zeroCar.move(model.Direction.LEFT);
+        Car zeroCar = new Car('c', 0, g42442.model.Orientation.HORIZONTAL, positionOk);
+        zeroCar.move(g42442.model.Direction.LEFT);
     }
 
     //test le déclenchement de l'exception lorsque la taille est négative
     @Test(expected = IllegalArgumentException.class)
     public void testSize2() {
-        Car negCar = new Car('c', -1, model.Orientation.HORIZONTAL, positionOk);
-        negCar.move(model.Direction.RIGHT);
+        Car negCar = new Car('c', -1, g42442.model.Orientation.HORIZONTAL, positionOk);
+        negCar.move(g42442.model.Direction.RIGHT);
     }
 
     //test de l'assignation de car quand la taille est strictement supérieur à 0
     @Test
     public void testSize3() {
-        horOk.move(model.Direction.LEFT);
+        horOk.move(g42442.model.Direction.LEFT);
     }
 
     @Test
@@ -68,57 +70,57 @@ public class CarTest {
     //test aller vers le haut, quand car=horizontal
     @Test(expected = IllegalArgumentException.class)
     public void testMoveUpA() {
-        Car C = new Car('c', 2, model.Orientation.HORIZONTAL, positionOk);
-        C.move(model.Direction.UP);
+        Car C = new Car('c', 2, g42442.model.Orientation.HORIZONTAL, positionOk);
+        C.move(g42442.model.Direction.UP);
     }
 
     //test aller vers le bas quand car=horizontal
     @Test(expected = IllegalArgumentException.class)
     public void testMoveDownA() {
-        Car C = new Car('c', 2, model.Orientation.HORIZONTAL, positionOk);
-        C.move(model.Direction.DOWN);
+        Car C = new Car('c', 2, g42442.model.Orientation.HORIZONTAL, positionOk);
+        C.move(g42442.model.Direction.DOWN);
     }
 
     //test aller vers le haut quand car=vertical
     @Test
     public void testMoveUpB() {
-        Car C = new Car('c', 2, model.Orientation.VERTICAL, positionOk);
-        C.move(model.Direction.UP);
+        Car C = new Car('c', 2, g42442.model.Orientation.VERTICAL, positionOk);
+        C.move(g42442.model.Direction.UP);
     }
 
     //test aller vers le bas quand car=vertical
     @Test
     public void testMoveDownB() {
-        Car C = new Car('c', 2, model.Orientation.VERTICAL, positionOk);
-        C.move(model.Direction.DOWN);
+        Car C = new Car('c', 2, g42442.model.Orientation.VERTICAL, positionOk);
+        C.move(g42442.model.Direction.DOWN);
     }
 
     //test aller vers la gauche quand car=vertical
     @Test(expected = IllegalArgumentException.class)
     public void testMoveLeftA() {
-        Car C = new Car('c', 2, model.Orientation.VERTICAL, positionOk);
-        C.move(model.Direction.LEFT);
+        Car C = new Car('c', 2, g42442.model.Orientation.VERTICAL, positionOk);
+        C.move(g42442.model.Direction.LEFT);
     }
 
     //test aller vers la droite quand car=vertical
     @Test(expected = IllegalArgumentException.class)
     public void testMoveRightA() {
-        Car C = new Car('c', 2, model.Orientation.VERTICAL, positionOk);
-        C.move(model.Direction.RIGHT);
+        Car C = new Car('c', 2, g42442.model.Orientation.VERTICAL, positionOk);
+        C.move(g42442.model.Direction.RIGHT);
     }
 
     //test aller vers la gauche quand car=horizontal
     @Test
     public void testMoveLeftB() {
-        Car C = new Car('c', 2, model.Orientation.HORIZONTAL, positionOk);
-        C.move(model.Direction.LEFT);
+        Car C = new Car('c', 2, g42442.model.Orientation.HORIZONTAL, positionOk);
+        C.move(g42442.model.Direction.LEFT);
     }
 
     //test aller vers la droite quand car=horizontal
     @Test
     public void testMoveRightB() {
-        Car C = new Car('c', 2, model.Orientation.HORIZONTAL, positionOk);
-        C.move(model.Direction.RIGHT);
+        Car C = new Car('c', 2, g42442.model.Orientation.HORIZONTAL, positionOk);
+        C.move(g42442.model.Direction.RIGHT);
     }
     /**
      * Test of List<Position> getPositions() methods, of class Car.

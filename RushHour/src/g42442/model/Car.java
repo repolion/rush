@@ -1,4 +1,4 @@
-package model;
+package g42442.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,23 +74,23 @@ public class Car {
     public void move(Direction direction) {
         switch (direction) {
             case LEFT:
-                if (this.orientation != model.Orientation.HORIZONTAL) {
+                if (this.orientation != g42442.model.Orientation.HORIZONTAL) {
                     throw new IllegalArgumentException("Déplacement impossible! ");
                 }
 
                 break;
             case RIGHT:
-                if (this.orientation != model.Orientation.HORIZONTAL) {
+                if (this.orientation != g42442.model.Orientation.HORIZONTAL) {
                     throw new IllegalArgumentException("Déplacement impossible! ");
                 }
                 break;
             case UP:
-                if (this.orientation != model.Orientation.VERTICAL) {
+                if (this.orientation != g42442.model.Orientation.VERTICAL) {
                     throw new IllegalArgumentException("Déplacement impossible! ");
                 }
                 break;
             case DOWN:
-                if (this.orientation != model.Orientation.VERTICAL) {
+                if (this.orientation != g42442.model.Orientation.VERTICAL) {
                     throw new IllegalArgumentException("Déplacement impossible! ");
                 }
                 break;
@@ -102,15 +102,15 @@ public class Car {
     public List<Position> getPositions() {
         List<Position> positions = new ArrayList<>();
         Position temp = this.currentPosition;
-        if (this.orientation == model.Orientation.HORIZONTAL) {
+        if (this.orientation == g42442.model.Orientation.HORIZONTAL) {
             for (int i = 1; i <= size; ++i) {
                 positions.add(temp);
-                temp = temp.getPosition(model.Direction.RIGHT);
+                temp = temp.getPosition(g42442.model.Direction.RIGHT);
             }
         } else {
             for (int i = 1; i <= size; ++i) {
                 positions.add(temp);
-                temp = temp.getPosition(model.Direction.DOWN);
+                temp = temp.getPosition(g42442.model.Direction.DOWN);
             }
 
         }

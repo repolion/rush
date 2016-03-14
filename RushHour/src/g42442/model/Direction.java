@@ -1,4 +1,4 @@
-package model;
+package g42442.model;
 
 /**
  * Enumeration Direction

@@ -1,5 +1,6 @@
 
-package model;
+package g42442.model;
+
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -88,59 +89,59 @@ public class BoardTest {
     //test de la méthode canPut sur des positions hors board
     @Test
     public void testCanPut1(){
-        Car car=new Car('a',2,model.Orientation.VERTICAL,new Position(-1,2));
+        Car car=new Car('a',2,g42442.model.Orientation.VERTICAL,new Position(-1,2));
         Board plateau=new Board(6,6,new Position(3,5));
         Assert.assertFalse(plateau.canPut(car));
     }
     public void testCanPut2(){
-        Car car=new Car('a',2,model.Orientation.VERTICAL,new Position(1,-1));
+        Car car=new Car('a',2,g42442.model.Orientation.VERTICAL,new Position(1,-1));
         Board plateau=new Board(6,6,new Position(3,5));
         Assert.assertFalse(plateau.canPut(car));
     }
     @Test
     public void testCanPut3(){
-        Car car=new Car('a',2,model.Orientation.VERTICAL,new Position(5,0));
+        Car car=new Car('a',2,g42442.model.Orientation.VERTICAL,new Position(5,0));
         Board plateau=new Board(6,6,new Position(3,5));
         Assert.assertFalse(plateau.canPut(car));
     }
     @Test
     public void testCanPut4(){
-        Car car=new Car('a',2,model.Orientation.VERTICAL,new Position(5,0));
+        Car car=new Car('a',2,g42442.model.Orientation.VERTICAL,new Position(5,0));
         Board plateau=new Board(6,6,new Position(5,5));
         Assert.assertFalse(plateau.canPut(car));
     }
     @Test
     public void testCanPut5(){
-        Car car=new Car('a',2,model.Orientation.HORIZONTAL,new Position(0,5));
+        Car car=new Car('a',2,g42442.model.Orientation.HORIZONTAL,new Position(0,5));
         Board plateau=new Board(6,6,new Position(3,5));
         Assert.assertFalse(plateau.canPut(car));
     }
     @Test
     public void testCanPut6(){
-        Car car=new Car('a',3,model.Orientation.HORIZONTAL,new Position(5,4));
+        Car car=new Car('a',3,g42442.model.Orientation.HORIZONTAL,new Position(5,4));
         Board plateau=new Board(6,6,new Position(3,5));
         Assert.assertFalse(plateau.canPut(car));
     }
     @Test
     public void testCanPut7(){
-        Car car=new Car('a',2,model.Orientation.HORIZONTAL,new Position(0,4));
+        Car car=new Car('a',2,g42442.model.Orientation.HORIZONTAL,new Position(0,4));
         Board plateau=new Board(6,6,new Position(3,5));
         Assert.assertTrue(plateau.canPut(car));
     }
     public void testCanPut8(){
-        Car car=new Car('a',3,model.Orientation.HORIZONTAL,new Position(5,3));
+        Car car=new Car('a',3,g42442.model.Orientation.HORIZONTAL,new Position(5,3));
         Board plateau=new Board(6,6,new Position(3,5));
         Assert.assertTrue(plateau.canPut(car));
     }
     @Test
     public void testCanPut9(){
-        Car car=new Car('a',2,model.Orientation.VERTICAL,new Position(4,0));
+        Car car=new Car('a',2,g42442.model.Orientation.VERTICAL,new Position(4,0));
         Board plateau=new Board(6,6,new Position(3,5));
         Assert.assertTrue(plateau.canPut(car));
     }
     @Test
     public void testCanPut10(){
-        Car car=new Car('a',3,model.Orientation.VERTICAL,new Position(3,5));
+        Car car=new Car('a',3,g42442.model.Orientation.VERTICAL,new Position(3,5));
         Board plateau=new Board(6,6,new Position(5,5));
         Assert.assertTrue(plateau.canPut(car));
     }
@@ -149,7 +150,7 @@ public class BoardTest {
     @Test
     public void testGetCarAt(){
         
-         Car car1=new Car('a',3,model.Orientation.VERTICAL,new Position(3,5));
+         Car car1=new Car('a',3,g42442.model.Orientation.VERTICAL,new Position(3,5));
          Board plateau=new Board(6,6,new Position(5,5));
          plateau.putCar(car1);
          Car car2=plateau.getCarAt(new Position(3,5));
@@ -158,7 +159,7 @@ public class BoardTest {
    
     @Test
     public void getCar1(){
-      Car car1=new Car('1',3,model.Orientation.VERTICAL,new Position(3,5));
+      Car car1=new Car('1',3,g42442.model.Orientation.VERTICAL,new Position(3,5));
       Car car2;
         Board plateau=new Board(6,6,new Position(5,5));
         plateau.putCar(car1);
@@ -181,76 +182,76 @@ public class BoardTest {
     
     @Test
     public void canMove1(){
-      Car car1=new Car('1',3,model.Orientation.HORIZONTAL,new Position(0,0));
-      Car car2=new Car('2',2,model.Orientation.VERTICAL,new Position(0,3));
+      Car car1=new Car('1',3,g42442.model.Orientation.HORIZONTAL,new Position(0,0));
+      Car car2=new Car('2',2,g42442.model.Orientation.VERTICAL,new Position(0,3));
         Board plateau=new Board(6,6,new Position(2,5));
         plateau.putCar(car1);
         plateau.putCar(car2);
-        Assert.assertFalse(plateau.canMove(car1,model.Direction.RIGHT));
+        Assert.assertFalse(plateau.canMove(car1,g42442.model.Direction.RIGHT));
         
     }
     
     @Test
     public void canMove2(){
-      Car car1=new Car('1',3,model.Orientation.HORIZONTAL,new Position(0,0));
+      Car car1=new Car('1',3,g42442.model.Orientation.HORIZONTAL,new Position(0,0));
       Board plateau=new Board(6,6,new Position(2,5));
         plateau.putCar(car1);
-        Assert.assertTrue(plateau.canMove(car1,model.Direction.RIGHT));
+        Assert.assertTrue(plateau.canMove(car1,g42442.model.Direction.RIGHT));
     }
     @Test
     public void canMove3(){
-      Car car1=new Car('1',3,model.Orientation.VERTICAL,new Position(0,0));
+      Car car1=new Car('1',3,g42442.model.Orientation.VERTICAL,new Position(0,0));
       Board plateau=new Board(6,6,new Position(2,5));
         plateau.putCar(car1);
-        Assert.assertFalse(plateau.canMove(car1,model.Direction.UP));
+        Assert.assertFalse(plateau.canMove(car1,g42442.model.Direction.UP));
     }
     @Test
     public void canMove4(){
-      Car car1=new Car('1',3,model.Orientation.VERTICAL,new Position(0,0));
+      Car car1=new Car('1',3,g42442.model.Orientation.VERTICAL,new Position(0,0));
       Board plateau=new Board(6,6,new Position(2,5));
         plateau.putCar(car1);
-        Assert.assertTrue(plateau.canMove(car1,model.Direction.DOWN));
+        Assert.assertTrue(plateau.canMove(car1,g42442.model.Direction.DOWN));
     }
     @Test
     public void canMove5(){
-      Car car1=new Car('1',2,model.Orientation.HORIZONTAL,new Position(0,4));
+      Car car1=new Car('1',2,g42442.model.Orientation.HORIZONTAL,new Position(0,4));
       Board plateau=new Board(6,6,new Position(2,5));
         plateau.putCar(car1);
-        Assert.assertFalse(plateau.canMove(car1,model.Direction.RIGHT));
+        Assert.assertFalse(plateau.canMove(car1,g42442.model.Direction.RIGHT));
     }
     @Test
     public void canMove6(){
-      Car car1=new Car('1',2,model.Orientation.HORIZONTAL,new Position(0,4));
+      Car car1=new Car('1',2,g42442.model.Orientation.HORIZONTAL,new Position(0,4));
       Board plateau=new Board(6,6,new Position(2,5));
         plateau.putCar(car1);
-        Assert.assertTrue(plateau.canMove(car1,model.Direction.LEFT));
+        Assert.assertTrue(plateau.canMove(car1,g42442.model.Direction.LEFT));
     }
     public void canMove7(){
-      Car car1=new Car('1',2,model.Orientation.VERTICAL,new Position(2,3));
-      Car car2=new Car('2',2,model.Orientation.HORIZONTAL,new Position(1,2));
-      Car car3=new Car('3',2,model.Orientation.HORIZONTAL,new Position(4,2));
+      Car car1=new Car('1',2,g42442.model.Orientation.VERTICAL,new Position(2,3));
+      Car car2=new Car('2',2,g42442.model.Orientation.HORIZONTAL,new Position(1,2));
+      Car car3=new Car('3',2,g42442.model.Orientation.HORIZONTAL,new Position(4,2));
       Board plateau=new Board(6,6,new Position(2,5));
         plateau.putCar(car1);
-        Assert.assertFalse(plateau.canMove(car1,model.Direction.UP));
+        Assert.assertFalse(plateau.canMove(car1,g42442.model.Direction.UP));
     }
     public void canMove8(){
-      Car car1=new Car('1',2,model.Orientation.VERTICAL,new Position(2,3));
-      Car car2=new Car('2',2,model.Orientation.HORIZONTAL,new Position(1,2));
-      Car car3=new Car('3',2,model.Orientation.HORIZONTAL,new Position(4,2));
+      Car car1=new Car('1',2,g42442.model.Orientation.VERTICAL,new Position(2,3));
+      Car car2=new Car('2',2,g42442.model.Orientation.HORIZONTAL,new Position(1,2));
+      Car car3=new Car('3',2,g42442.model.Orientation.HORIZONTAL,new Position(4,2));
       Board plateau=new Board(6,6,new Position(2,5));
         plateau.putCar(car1);
-        Assert.assertFalse(plateau.canMove(car1,model.Direction.DOWN));
+        Assert.assertFalse(plateau.canMove(car1,g42442.model.Direction.DOWN));
     }
     public void canMove9(){
-      Car car1=new Car('1',2,model.Orientation.VERTICAL,new Position(2,3));
+      Car car1=new Car('1',2,g42442.model.Orientation.VERTICAL,new Position(2,3));
         Board plateau=new Board(6,6,new Position(2,5));
         plateau.putCar(car1);
-        Assert.assertTrue(plateau.canMove(car1,model.Direction.UP));
+        Assert.assertTrue(plateau.canMove(car1,g42442.model.Direction.UP));
     }
     public void canMove10(){
-      Car car1=new Car('1',2,model.Orientation.VERTICAL,new Position(2,3));
+      Car car1=new Car('1',2,g42442.model.Orientation.VERTICAL,new Position(2,3));
         Board plateau=new Board(6,6,new Position(2,5));
         plateau.putCar(car1);
-        Assert.assertTrue(plateau.canMove(car1,model.Direction.DOWN));
+        Assert.assertTrue(plateau.canMove(car1,g42442.model.Direction.DOWN));
     }
 }
