@@ -1,7 +1,5 @@
 package g42442.model;
 
-import g42442.model.Direction;
-import g42442.model.Position;
 import org.junit.Assert;
 import org.junit.Test;
 

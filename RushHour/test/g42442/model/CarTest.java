@@ -1,7 +1,5 @@
 package g42442.model;
 
-import g42442.model.Car;
-import g42442.model.Position;
 import org.junit.Test;
 
 /**

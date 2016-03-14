@@ -35,9 +35,9 @@ public class RushHourGame {
 
     //Autres méthodes
     public void move(char id, Direction direction) {
-        Car carToMove= board.getCar(id);
+        Car carToMove = board.getCar(id);
         if (carToMove != null) {
-           
+
             if (board.canMove(carToMove, direction)) {
                 board.remove(carToMove);
                 carToMove.move(direction);
@@ -45,11 +45,11 @@ public class RushHourGame {
             }
         }
     }
-    
-    public boolean isOver(){
-        boolean isOver=false;
-        if(board.getCarAt(board.getExit())==redCar){
-            isOver=true;
+
+    public boolean isOver() {
+        boolean isOver = false;
+        if (board.getCarAt(board.getExit()) == redCar) {
+            isOver = true;
         }
         return isOver;
     }
