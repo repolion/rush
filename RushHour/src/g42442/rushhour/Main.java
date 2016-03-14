@@ -19,8 +19,7 @@ public class Main {
         list.add(new g42442.model.Car('5', 3, g42442.model.Orientation.VERTICAL, new g42442.model.Position(1, 4)));
         list.add(new g42442.model.Car('6', 2, g42442.model.Orientation.HORIZONTAL, new g42442.model.Position(4, 4)));
         list.add(new g42442.model.Car('7', 2, g42442.model.Orientation.VERTICAL, new g42442.model.Position(3, 1)));
-        g42442.model.RushHourGame game = new RushHourGame(6, 6, new g42442.model.Position(2, 5), list, redCar);
-
+        g42442.model.RushHourGame game = new RushHourGame(6, 6, new g42442.model.Position(redCar.getCurrentPosition().getRow(),5), list, redCar);
         g42442.view.RushHourView gameView = new g42442.view.RushHourView(game);
         gameView.play();
 

@@ -25,9 +25,9 @@ public class RushHourView {
         char direction;
         g42442.view.Display.displayBoard(game.getBoard());
         while (isOver == false) {
-            System.out.println("Enter the id of the car to be moved");
+            System.out.println("Enter the id of the car to be moved: ");
             carId = in.next().charAt(0);
-            System.out.println("Enter the direction: l(Left),u(UP), d(DOWN), r(RIGHT)");
+            System.out.println("Enter the direction: l(Left),u(UP), d(DOWN), r(RIGHT) ");
             direction = in.next().charAt(0);
             game.move(carId, convert(direction));
 
