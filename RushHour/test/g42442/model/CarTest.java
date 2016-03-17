@@ -8,125 +8,78 @@ import org.junit.Test;
  */
 public class CarTest {
 
-    //Décalarations et assignations de positions et Orientations pour Tests
-    Position positionOk = new Position(1, 1);
-    Car horOk = new Car('a', 1, g42442.model.Orientation.HORIZONTAL, positionOk);
-    Car verOk = new Car('b', 1, g42442.model.Orientation.VERTICAL, positionOk);
-
-    /**
-     * Test the getters, of class Car.
-     */
-    //test l'accesseur de l'attribut id
-    @Test
-    public void testGetId() {
-        horOk.getId();
-    }
-
-    //test l'accesseur de l'attribut orientation
-    @Test
-    public void getOrientation() {
-        verOk.getOrientation();
-    }
-
-    //test l'accesseur de l'attribut currentPosition
-    @Test
-    public void getCurrentPosition() {
-        horOk.getCurrentPosition();
-    }
-
-    /**
-     * Test of size method, of class Car.
-     */
-    //test le déclenchement de l'exception si la taille = 0
-    @Test(expected = IllegalArgumentException.class)
+    // test of the exception if the size = 0
+    @Test(expected = IllegalArgumentException.class)            //test le déclenchement de l'exception si la taille = 0
     public void testSize1() {
-        Car zeroCar = new Car('c', 0, g42442.model.Orientation.HORIZONTAL, positionOk);
-        zeroCar.move(g42442.model.Direction.LEFT);
+        Car zeroCar = new Car('c', 0, Orientation.HORIZONTAL, new Position(1, 1));
     }
 
-    //test le déclenchement de l'exception lorsque la taille est négative
-    @Test(expected = IllegalArgumentException.class)
+    //test of the exception if the size < 0
+    @Test(expected = IllegalArgumentException.class)        //test le déclenchement de l'exception lorsque la taille est négative
     public void testSize2() {
-        Car negCar = new Car('c', -1, g42442.model.Orientation.HORIZONTAL, positionOk);
-        negCar.move(g42442.model.Direction.RIGHT);
+        Car negCar = new Car('c', -1, Orientation.HORIZONTAL, new Position(1, 1));
     }
 
-    //test de l'assignation de car quand la taille est strictement supérieur à 0
+    //test a correct declaration
     @Test
-    public void testSize3() {
-        horOk.move(g42442.model.Direction.LEFT);
+    public void testSize() {
+        Car okCar = new Car('c', 1, Orientation.HORIZONTAL, new Position(1, 1));
     }
 
-    @Test
-    public void testToString() {
-        verOk.toString();
-    }
-
-    /**
-     * Test of move methods for class Car.
-     */
-    //test aller vers le haut, quand car=horizontal
-    @Test(expected = IllegalArgumentException.class)
+    //test the moving method of the car (Up when car HORIZONTAL)
+    @Test(expected = IllegalArgumentException.class)                     //test aller vers le haut, quand car=horizontal
     public void testMoveUpA() {
-        Car C = new Car('c', 2, g42442.model.Orientation.HORIZONTAL, positionOk);
-        C.move(g42442.model.Direction.UP);
+        Car C = new Car('c', 2, Orientation.HORIZONTAL, new Position(1, 1));
+        C.move(Direction.UP);
     }
 
-    //test aller vers le bas quand car=horizontal
-    @Test(expected = IllegalArgumentException.class)
-    public void testMoveDownA() {
-        Car C = new Car('c', 2, g42442.model.Orientation.HORIZONTAL, positionOk);
-        C.move(g42442.model.Direction.DOWN);
-    }
-
-    //test aller vers le haut quand car=vertical
-    @Test
+    //test the moving method of the car (Up when car VERTICAL)
+    @Test                                                               //test aller vers le haut quand car=vertical
     public void testMoveUpB() {
-        Car C = new Car('c', 2, g42442.model.Orientation.VERTICAL, positionOk);
-        C.move(g42442.model.Direction.UP);
+        Car C = new Car('c', 2, Orientation.VERTICAL, new Position(1, 1));
+        C.move(Direction.UP);
     }
 
-    //test aller vers le bas quand car=vertical
-    @Test
+    //test the moving method of the car (down when car HORIZONTAL)
+    @Test(expected = IllegalArgumentException.class)                    //test aller vers le bas quand car=horizontal
+    public void testMoveDownA() {
+        Car C = new Car('c', 2, Orientation.HORIZONTAL, new Position(1, 1));
+        C.move(Direction.DOWN);
+    }
+
+    //test the moving method of the car (down when car VERTICAL)
+    @Test                                                                //test aller vers le bas quand car=vertical
     public void testMoveDownB() {
-        Car C = new Car('c', 2, g42442.model.Orientation.VERTICAL, positionOk);
-        C.move(g42442.model.Direction.DOWN);
+        Car C = new Car('c', 2, Orientation.VERTICAL, new Position(1, 1));
+        C.move(Direction.DOWN);
     }
 
-    //test aller vers la gauche quand car=vertical
-    @Test(expected = IllegalArgumentException.class)
+    //test the moving method of the car (left when car VERTICAL)
+    @Test(expected = IllegalArgumentException.class)                    //test aller vers la gauche quand car=vertical
     public void testMoveLeftA() {
-        Car C = new Car('c', 2, g42442.model.Orientation.VERTICAL, positionOk);
-        C.move(g42442.model.Direction.LEFT);
+        Car C = new Car('c', 2, Orientation.VERTICAL, new Position(1, 1));
+        C.move(Direction.LEFT);
     }
 
-    //test aller vers la droite quand car=vertical
-    @Test(expected = IllegalArgumentException.class)
-    public void testMoveRightA() {
-        Car C = new Car('c', 2, g42442.model.Orientation.VERTICAL, positionOk);
-        C.move(g42442.model.Direction.RIGHT);
-    }
-
-    //test aller vers la gauche quand car=horizontal
-    @Test
+    //test the moving method of the car (left when car HORIZONTAL)
+    @Test                                                               //test aller vers la gauche quand car=horizontal
     public void testMoveLeftB() {
-        Car C = new Car('c', 2, g42442.model.Orientation.HORIZONTAL, positionOk);
-        C.move(g42442.model.Direction.LEFT);
+        Car C = new Car('c', 2, Orientation.HORIZONTAL, new Position(1, 1));
+        C.move(Direction.LEFT);
     }
 
-    //test aller vers la droite quand car=horizontal
-    @Test
+    //test the moving method of the car (right when car VERTICAL)
+    @Test(expected = IllegalArgumentException.class)                    //test aller vers la droite quand car=vertical
+    public void testMoveRightA() {
+        Car C = new Car('c', 2, Orientation.VERTICAL, new Position(1, 1));
+        C.move(Direction.RIGHT);
+    }
+
+    //test the moving method of the car (right when car HORIZONTAL)     
+    @Test                                                               //test aller vers la droite quand car=horizontal
     public void testMoveRightB() {
-        Car C = new Car('c', 2, g42442.model.Orientation.HORIZONTAL, positionOk);
-        C.move(g42442.model.Direction.RIGHT);
+        Car C = new Car('c', 2,Orientation.HORIZONTAL, new Position(1, 1));
+        C.move(Direction.RIGHT);
     }
-    /**
-     * Test of List<Position> getPositions() methods, of class Car.
-     */
 
-    /* @Test
-     public void testListPositions() {
-        
-     }
-     */
 }
