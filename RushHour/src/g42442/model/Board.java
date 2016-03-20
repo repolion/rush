@@ -15,6 +15,8 @@ public class Board {
     //constructeurs
     public Board(int row, int column, Position exit) {
         if (row <= 0 || column <= 0) {
+            //@pbt lignes trop longues
+            //@pbt commentaires en anglais
             throw new IllegalArgumentException("Les paramètres de taille du plateau ne sont pas valides! ");
         }
         this.grid = new Car[row][column];
@@ -26,6 +28,7 @@ public class Board {
     }
 
     public Board() {
+        //@pbt c'est mieux d'appeler le constructeur this(6,6…)
         this.grid = new Car[6][6];
         this.exit = new Position(2, 5);
     }
@@ -49,11 +52,16 @@ public class Board {
     }
 
     //retourne vrai si toutes les palces de car sont sur le board et sont libres
+    //@pbt c'est mieux d'écrire la javadoc au fur et à mesure 
     public boolean canPut(Car car) {
         List<Position> posCar = car.getPositions(); // posCar est une liste des positions d'un car
+        //@pbt c'est mieux de dire isInBoard par exemple
         boolean parkingInBoard = true;
         boolean parkingFree = true;
         int i = 0;
+        //@pbt on évitera varbooléenne == true 
+        //@pbt ne peut-on pas supposer que getPositions retourne des positions 
+        // dans le parking ? 
         while (i < posCar.size() && parkingInBoard == true) {
 
             if (posCar.get(i).getRow() < 0 || posCar.get(i).getColumn() < 0
@@ -100,6 +108,8 @@ public class Board {
         int j = 0;
         while (i < this.getHeight()) {
             while (j < this.getWidth()) {
+                //@pbt tu peux mettre un "et" plutôt que deux if grâce à 
+                // l'évaluation parresseuse 
                 if (this.grid[i][j] != null) {
                     if (this.grid[i][j].getId() == id) {
                         return this.grid[i][j];
@@ -119,6 +129,7 @@ public class Board {
         Position positionExt;
         Position positionTest;
 
+        //@pbt n'as-tu pas oublié l'orientation ?
         switch (direction) {                    //isOnTheBoard(Position position, Board board)
             case LEFT:                          //isFree(position)
             case UP:
