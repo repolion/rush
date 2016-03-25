@@ -1,5 +1,6 @@
 package g42442.model;
 
+import static g42442.view.Color.toRed;
 import java.util.List;
 
 /**
@@ -36,14 +37,19 @@ public class RushHourGame {
     //Autres méthodes
     public void move(char id, Direction direction) {
         Car carToMove = board.getCar(id);
-        if (carToMove != null) {
-
-            if (board.canMove(carToMove, direction)) {
-                board.remove(carToMove);
-                carToMove.move(direction);
-                board.putCar(carToMove);
-            }
+        if (carToMove != null && board.canMove(carToMove, direction)) {
+            board.remove(carToMove);
+            try{
+            carToMove.move(direction);}
+            catch(IllegalArgumentException e){
+                System.out.println(toRed("This move is not allowed"));}
+            board.putCar(carToMove);
         }
+        else{
+            System.out.println(toRed("This move is not allowed"));
+        
+    }
+
     }
 
     public boolean isOver() {

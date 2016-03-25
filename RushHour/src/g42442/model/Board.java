@@ -51,25 +51,25 @@ public class Board {
     //retourne vrai si toutes les palces de car sont sur le board et sont libres
     public boolean canPut(Car car) {
         List<Position> posCar = car.getPositions(); // posCar est une liste des positions d'un car
-        boolean parkingInBoard = true;
+        boolean isInBoard = true;
         boolean parkingFree = true;
         int i = 0;
-        while (i < posCar.size() && parkingInBoard == true) {
+        while (i < posCar.size() && isInBoard == true) {
 
             if (posCar.get(i).getRow() < 0 || posCar.get(i).getColumn() < 0
                     || posCar.get(i).getColumn() >= this.getWidth()
                     || posCar.get(i).getRow() >= this.getHeight()) {
 
-                parkingInBoard = false;
+                isInBoard = false;
             }
             ++i;
         }
         i = 0;
-        while (i < posCar.size() && parkingInBoard == true && parkingFree) {
+        while (i < posCar.size() && isInBoard == true && parkingFree) {
             parkingFree = this.isFree(posCar.get(i));
             ++i;
         }
-        return parkingInBoard && parkingFree;
+        return isInBoard && parkingFree;
     }
 
     // place un objet de type Car sur le plateau
@@ -94,21 +94,14 @@ public class Board {
     }
 
     /*méthode qui recherche sur le plateau une voiture et retourne une voiture 
-     en fontion de son id ou null si elle n'est pas trouvée */
+     en fonction de son id ou null si elle n'est pas trouvée */
     public Car getCar(char id) {
-        int i = 0;
-        int j = 0;
-        while (i < this.getHeight()) {
-            while (j < this.getWidth()) {
-                if (this.grid[i][j] != null) {
-                    if (this.grid[i][j].getId() == id) {
-                        return this.grid[i][j];
-                    }
+        for (int i = 0; i < this.getHeight(); ++i) {
+            for (int j = 0; j < this.getWidth(); ++j) {
+                if (this.grid[i][j] != null && this.grid[i][j].getId() == id) {
+                    return this.grid[i][j];
                 }
-                ++j;
             }
-            j = 0;
-            ++i;
         }
         return null;
     }
@@ -144,12 +137,11 @@ public class Board {
 
     public boolean isOnTheBoard(Position position) {
         boolean isOnTheBoard = false;
-        if (position.getRow() >= 0 && position.getRow() < this.getHeight()) {
-            if (position.getColumn() >= 0 && position.getColumn() < this.getWidth()) {
-                isOnTheBoard = true;
-            }
-
+        if (position.getRow() >= 0 && position.getRow() < this.getHeight()
+                && position.getColumn() >= 0 && position.getColumn() < this.getWidth()) {
+            isOnTheBoard = true;
         }
+
         return isOnTheBoard;
     }
 

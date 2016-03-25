@@ -1,13 +1,17 @@
 package g42442.view;
 
+import g42442.model.Direction;
 import java.util.Scanner;
 import g42442.model.RushHourGame;
+import static g42442.view.Display.displayBoard;
 
 /**
  *
  * @author Cordier Olivier
  */
 public class RushHourView {
+
+    private static final Scanner in = new Scanner(System.in);
 
     //Attribut
     private RushHourGame game;
@@ -19,46 +23,63 @@ public class RushHourView {
 
     //Méthode
     public void play() {
-        Scanner in = new Scanner(System.in);
-        boolean isOver = false;
         char carId;
         char direction;
-        g42442.view.Display.displayBoard(game.getBoard());
-        while (isOver == false) {
-            System.out.println("Enter the id of the car to be moved: ");
-            carId = in.next().charAt(0);
-            System.out.println("Enter the direction: l(Left),u(UP), d(DOWN), r(RIGHT) ");
-            direction = in.next().charAt(0);
+        Display.displayBoard(game.getBoard());
+        while (!game.isOver()) {
+            carId = askId("Enter the id of the car you would like to move: ");
+            direction = askDirection("Enter the direction: l(Left),u(UP), d(DOWN), r(RIGHT) ");
             game.move(carId, convert(direction));
-
-            g42442.view.Display.displayBoard(game.getBoard());
-            isOver = game.isOver();
+            displayBoard(game.getBoard());
         }
         System.out.println("Well done!!!  ");
         System.out.println("Game Over!!!  ");
     }
 
-    public g42442.model.Direction convert(char direction) {
-        g42442.model.Direction dir = null;
+    public Direction convert(char direction) {
+        Direction dir = null;
 
         switch (direction) {
             case 'l':
-                dir = g42442.model.Direction.LEFT;
+                dir = Direction.LEFT;
 
                 break;
             case 'r':
-                dir = g42442.model.Direction.RIGHT;
+                dir = Direction.RIGHT;
                 break;
             case 'u':
-                dir = g42442.model.Direction.UP;
+                dir = Direction.UP;
                 break;
             case 'd':
-                dir = g42442.model.Direction.DOWN;
+                dir = Direction.DOWN;
                 break;
             default:
                 System.out.println("This is not a valid direction ");
         }
         return dir;
+    }
+
+    private static char askId(String msg) {
+        System.out.println(msg);
+        char id = in.next().charAt(0);
+        while (!Character.isDigit(id)) {
+            System.out.println("You have entered an invalid entry.");
+            System.out.println(msg);
+            id = in.next().charAt(0);
+        }
+        return id;
+    }
+
+    private static char askDirection(String msg) {
+        System.out.println(msg);
+        char direction = in.next().charAt(0);
+        direction = Character.toLowerCase(direction);
+        while (direction != 'l' && direction != 'r' && direction != 'u' && direction != 'd') {
+            System.out.println("You have entered an invalid entry.");
+            System.out.println(msg);
+            direction = in.next().charAt(0);
+        }
+        return direction;
     }
 
 }

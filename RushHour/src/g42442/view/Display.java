@@ -2,6 +2,7 @@ package g42442.view;
 
 import g42442.model.Position;
 import g42442.model.Board;
+import static g42442.view.Color.color;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Display {
                 for (int j = 0; j < board.getWidth(); ++j) {
                     if (board.getCarAt(new Position(i, j)) != null) {
                         for (int x = 0; x < 3; ++x) {
-                            System.out.print(Color.color(board.getCarAt(new Position(i, j)).getId()) + " ");
+                            System.out.print(color(board.getCarAt(new Position(i, j)).getId()) + " ");
                         }
                     } else {
                         for (int x = 0; x < 3; ++x) {
