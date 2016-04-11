@@ -7,21 +7,22 @@ package g42442.model;
  */
 public class Position {
 
-    //Attributes
-    private int row;        // pas de restriction (peu être énorme ou même négatif, sera vérifié ailleurs
+    //instance attributes
+    private int row;        // no restrictions (will be verified elsewhere)
     private int column;     // idem
 
-    //Constructeur
+    //constructor
     /**
      * @param row line number of this position
      * @param column column number of this position
      */
-    public Position(int row, int column) {              // construit une position avec comme paramètre le numéro de ligne 
-        this.row = row;                                 // et de colonne
+    // built a position with parameters: the line and column number
+    public Position(int row, int column) {
+        this.row = row;
         this.column = column;
     }
 
-    //Accesseurs
+    //getters
     /**
      * @return the line number of this position
      */
@@ -36,7 +37,7 @@ public class Position {
         return this.column;
     }
 
-    //Autres méthodes
+    //others methods
     /**
      * @return the display characteristics of the position
      */
@@ -51,26 +52,27 @@ public class Position {
      * @return a new position representing the position adjacent to the current
      * position
      */
-    public Position getPosition(Direction direction) {      //retourne une nouvelle position à côté de l'objet 
-        int tempRow = this.row;                             //lui même dans la direction donnée en paramètre
+    //return a new position next to the object
+    public Position getPosition(Direction direction) {
+        int tempRow = this.row;
         int tempColumn = this.column;
-
+        // modification ot the coordinate function of the direction
         switch (direction) {
             case LEFT:
-                tempColumn -= 1;                            // direction étant gauche, retire un au numéro de la colonne
-                break;                                      // de l'objet => exemple: (2,1) devient (2,0)
+                tempColumn -= 1;    // exemple: (2,1) become (2,0)
+                break;
             case RIGHT:
-                tempColumn += 1;                            // exemple: (2,1) devient (2,2)
+                tempColumn += 1;    // exemple: (2,1) become (2,2)
                 break;
-            case UP:                                        // exemple: (2,1) devient (3,1) 
-                tempRow -= 1;
+            case UP:
+                tempRow -= 1;       // exemple: (2,1) become (3,1) 
                 break;
-            case DOWN:                                      // exemple: (2,1) devient (3,1)
-                tempRow += 1;
+            case DOWN:
+                tempRow += 1;       // exemple: (2,1) become (3,1)
                 break;
         }
-        return new Position(tempRow, tempColumn);           // pos reçoit le numéro de ligne et de colonne de la nouvelle  
-        // position
+        return new Position(tempRow, tempColumn);
+        // pos receives the line and column number of the new position
     }
 
     /**
@@ -78,9 +80,11 @@ public class Position {
      * @return true if the parameters of the two positions are equal
      */
     @Override
-    public boolean equals(Object o) {                       // méthodes boolean equals o(Object o) redéfinie
-        if (!(o instanceof Position)) {                     // permet à ma classe Test de tester "l'égalité" des 
-            return false;                                   // attributs de 2 Positions
+    /* method boolean equals o(Object o) redefined allows my class Test to 
+     test "the egality"of 2 positions attributes*/
+    public boolean equals(Object o) {
+        if (!(o instanceof Position)) {
+            return false;
         }
         Position position = (Position) o;
         return this.getRow() == position.getRow()
@@ -88,7 +92,8 @@ public class Position {
     }
 
     @Override
-    public int hashCode() {                      //génère un hashcode identique pour 2 positions qui ont les mêmes attributs
+    //generate same hash code for two positions that have the same attributes
+    public int hashCode() {
         int hash = 7;
         hash = 59 * hash + this.row;
         hash = 59 * hash + this.column;

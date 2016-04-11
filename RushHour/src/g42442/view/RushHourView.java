@@ -3,7 +3,9 @@ package g42442.view;
 import g42442.model.Direction;
 import java.util.Scanner;
 import g42442.model.RushHourGame;
+import static g42442.view.Color.toRed;
 import static g42442.view.Display.displayBoard;
+import static g42442.view.Display.gameOver;
 
 /**
  *
@@ -28,12 +30,14 @@ public class RushHourView {
         Display.displayBoard(game.getBoard());
         while (!game.isOver()) {
             carId = askId("Enter the id of the car you would like to move: ");
-            direction = askDirection("Enter the direction: l(Left),u(UP), d(DOWN), r(RIGHT) ");
+            direction = askDirection("Enter the direction: l(Left),u(UP),"
+                    + " d(DOWN), r(RIGHT) ");
+
             game.move(carId, convert(direction));
+
             displayBoard(game.getBoard());
         }
-        System.out.println("Well done!!!  ");
-        System.out.println("Game Over!!!  ");
+        gameOver();
     }
 
     public Direction convert(char direction) {
@@ -63,7 +67,7 @@ public class RushHourView {
         System.out.println(msg);
         char id = in.next().charAt(0);
         while (!Character.isDigit(id)) {
-            System.out.println("You have entered an invalid entry.");
+            System.out.println(toRed("You have entered an invalid entry."));
             System.out.println(msg);
             id = in.next().charAt(0);
         }
@@ -74,8 +78,9 @@ public class RushHourView {
         System.out.println(msg);
         char direction = in.next().charAt(0);
         direction = Character.toLowerCase(direction);
-        while (direction != 'l' && direction != 'r' && direction != 'u' && direction != 'd') {
-            System.out.println("You have entered an invalid entry.");
+        while (direction != 'l' && direction != 'r'
+                && direction != 'u' && direction != 'd') {
+            System.out.println(toRed("You have entered an invalid entry."));
             System.out.println(msg);
             direction = in.next().charAt(0);
         }

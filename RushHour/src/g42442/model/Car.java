@@ -10,18 +10,19 @@ import java.util.List;
  */
 public class Car {
 
-    //Attributs
+    //instance attributes
     private char id;
     private int size;
     private Orientation orientation;
     private Position currentPosition;
 
-    //Constructeur
+    //constructor
     /**
      * @param id the identity of the object Car
      * @param size the size of the car
      * @param orientation the orientation(HORIZONTAL-VERTICAL) of the car
      * @param position first box of the board where the car is located
+     * @throws IllegalArgumentException
      */
     public Car(char id, int size, Orientation orientation, Position position) {
         if (size <= 0) {
@@ -33,7 +34,7 @@ public class Car {
         this.currentPosition = position;
     }
 
-    //Accesseurs
+    //getters
     /**
      * @return the car id
      */
@@ -55,7 +56,7 @@ public class Car {
         return this.currentPosition;
     }
 
-    //Autres méthodes
+    //others methods
     /**
      * @return the display characteristics of the car (id, size, orientation,
      * position)
@@ -63,13 +64,15 @@ public class Car {
     @Override
     public String toString() {
         return "la voiture " + this.id + " de taille " + this.size
-                + " d'orientation " + this.orientation + " est en position" + this.currentPosition;
+                + " d'orientation " + this.orientation
+                + " est en position" + this.currentPosition;
     }
 
     /**
      * Test the position of the car and if the mouvement is allowed, move it.
      *
      * @param direction of the movement car
+     * @throws IllegalArgumentException
      */
     public void move(Direction direction) {
         switch (direction) {
@@ -118,6 +121,14 @@ public class Car {
             }
         }
         return positions;
+    }
+    /**
+     * to know if two differents car has the same id
+     * @param car2 the car to be compared to the object Car
+     * @return if the two cars has the same id
+     */
+    public boolean equalsName(Car car2) {
+         return this.id==car2.getId();
     }
 
 }
