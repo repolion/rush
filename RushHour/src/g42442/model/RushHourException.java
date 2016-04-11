@@ -5,7 +5,7 @@ package g42442.model;
  */
 public class RushHourException extends Exception {
 
-    public RushHourException(String s) {
-        super(s);
+    public RushHourException(String e) {
+        super(e);
     }
 }

@@ -11,8 +11,7 @@ import org.junit.Test;
 public class BoardTest {
 
     /*test to check if an exception is launched caused by an illegal size of
-    the board*/
-    
+     the board*/
     @Test
     public void testBoard1() throws RushHourException {
         Board plateau = new Board(1, 1, new Position(0, 0));
@@ -39,7 +38,6 @@ public class BoardTest {
     }
 
     //test if no exception launched with acceptables values for the board
-
     @Test
     public void testBoard6() throws RushHourException {
         Board plateau = new Board(1, 1, new Position(0, 0));
@@ -51,8 +49,7 @@ public class BoardTest {
     }
 
     /*test to check if an exception is launched caused by an illegal exit 
-    position on the board*/
-    
+     position on the board*/
     @Test(expected = RushHourException.class)
     public void testExit1() throws RushHourException {
         Board plateau = new Board(6, 6, new Position(0, 4));
@@ -94,7 +91,6 @@ public class BoardTest {
     }
 
     //test if no exception launched with acceptables values of the exit position
-
     @Test
     public void testExit9() throws RushHourException {
         Board plateau = new Board(6, 6, new Position(0, 5));
@@ -105,7 +101,8 @@ public class BoardTest {
         Board plateau = new Board(6, 6, new Position(5, 5));
     }
 
-    //test de la méthode canPut sur des positions hors board
+    /*test to check if an exception is launched caused usinf the method
+     canPut with positions out of the board*/
     @Test
     public void testCanPut1() throws RushHourException {
         Car car = new Car('a', 2, Orientation.VERTICAL, new Position(-1, 2));
@@ -174,7 +171,7 @@ public class BoardTest {
         Assert.assertTrue(plateau.canPut(car));
     }
 
-    //test methode getCarAt()
+    //test the method getCarAt()
     @Test
     public void testGetCarAt() throws RushHourException {
 
@@ -208,6 +205,7 @@ public class BoardTest {
 
     }
 
+    //test the method canMove
     @Test
     public void canMove1() throws RushHourException {
         Car car1 = new Car('1', 3, Orientation.HORIZONTAL, new Position(0, 0));

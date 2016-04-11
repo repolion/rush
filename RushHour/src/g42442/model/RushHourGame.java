@@ -1,5 +1,6 @@
 package g42442.model;
 
+import static g42442.view.Color.toRed;
 import java.util.List;
 
 /**
@@ -42,8 +43,8 @@ public class RushHourGame {
 
     //getter
     /**
-     *
-     * @return
+     * 
+     * @return the playing board
      */
     public Board getBoard() {
         return this.board;
@@ -51,13 +52,20 @@ public class RushHourGame {
 
     //other method
     /**
-     *
+     * to move a car in a certain direction
      * @param id the identity of the car to move
      * @param direction the direction in which the car should move
      */
     public void move(char id, Direction direction) {
         Car carToMove = board.getCar(id);
-        if (carToMove != null && board.canMove(carToMove, direction)) {
+        if (carToMove == null){
+            throw new IllegalArgumentException(toRed("this identity "
+                    + "does not match with a car!!!"));
+        }
+        else if (!board.canMove(carToMove, direction)){
+            throw new IllegalArgumentException(toRed("this movement is not allowed!!!"));
+        }
+        else {
             board.remove(carToMove);
             carToMove.move(direction);
             board.putCar(carToMove);

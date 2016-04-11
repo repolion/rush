@@ -29,11 +29,15 @@ public class RushHourView {
         char direction;
         Display.displayBoard(game.getBoard());
         while (!game.isOver()) {
+            try {
             carId = askId("Enter the id of the car you would like to move: ");
             direction = askDirection("Enter the direction: l(Left),u(UP),"
                     + " d(DOWN), r(RIGHT) ");
-
-            game.move(carId, convert(direction));
+            
+                game.move(carId, convert(direction));
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
 
             displayBoard(game.getBoard());
         }

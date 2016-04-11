@@ -1,5 +1,6 @@
 package g42442.model;
 
+import static g42442.view.Color.toRed;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Car {
      */
     public Car(char id, int size, Orientation orientation, Position position) {
         if (size <= 0) {
-            throw new IllegalArgumentException("taille invalide! ");
+            throw new IllegalArgumentException("invalid size! ");
         }
         this.id = id;
         this.size = size;
@@ -78,23 +79,27 @@ public class Car {
         switch (direction) {
             case LEFT:
                 if (this.orientation != Orientation.HORIZONTAL) {
-                    throw new IllegalArgumentException("Déplacement impossible! ");
+                    throw new IllegalArgumentException(toRed("this movement"
+                            + " is not allowed!!! "));
                 }
 
                 break;
             case RIGHT:
                 if (this.orientation != Orientation.HORIZONTAL) {
-                    throw new IllegalArgumentException("Déplacement impossible! ");
+                    throw new IllegalArgumentException(toRed("this movement"
+                            + " is not allowed!!! "));
                 }
                 break;
             case UP:
                 if (this.orientation != Orientation.VERTICAL) {
-                    throw new IllegalArgumentException("Déplacement impossible! ");
+                    throw new IllegalArgumentException(toRed("this movement"
+                            + " is not allowed!!! "));
                 }
                 break;
             case DOWN:
                 if (this.orientation != Orientation.VERTICAL) {
-                    throw new IllegalArgumentException("Déplacement impossible! ");
+                    throw new IllegalArgumentException(toRed("this movement"
+                            + " is not allowed!!! "));
                 }
                 break;
         }
@@ -122,13 +127,15 @@ public class Car {
         }
         return positions;
     }
+
     /**
      * to know if two differents car has the same id
+     *
      * @param car2 the car to be compared to the object Car
      * @return if the two cars has the same id
      */
     public boolean equalsName(Car car2) {
-         return this.id==car2.getId();
+        return this.id == car2.getId();
     }
 
 }

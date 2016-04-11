@@ -47,12 +47,12 @@ public class Position {
     }
 
     /**
+     * to know the position next to the car
      * @param direction defines the direction in which the position will be
      * moved
      * @return a new position representing the position adjacent to the current
      * position
      */
-    //return a new position next to the object
     public Position getPosition(Direction direction) {
         int tempRow = this.row;
         int tempColumn = this.column;
@@ -76,12 +76,12 @@ public class Position {
     }
 
     /**
+     * method boolean equals o(Object o) redefined allows my class Test to 
+     * test "the egality"of 2 positions attributes
      * @param o a Position
      * @return true if the parameters of the two positions are equal
      */
     @Override
-    /* method boolean equals o(Object o) redefined allows my class Test to 
-     test "the egality"of 2 positions attributes*/
     public boolean equals(Object o) {
         if (!(o instanceof Position)) {
             return false;
