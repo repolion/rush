@@ -1,13 +1,16 @@
 package g42442.rushhour;
 
 import g42442.model.Car;
-import g42442.model.Orientation;
 import g42442.model.Position;
 import g42442.model.RushHourException;
 import java.util.ArrayList;
 import java.util.List;
 import g42442.model.RushHourGame;
+import static g42442.view.Json.carJson;
+import static g42442.view.Json.hasard;
+import static g42442.view.Json.file;
 import g42442.view.RushHourView;
+
 
 /**
  *
@@ -16,19 +19,25 @@ import g42442.view.RushHourView;
 public class Main {
 
     public static void main(String[] args) throws RushHourException {
-        Car redCar = new Car('1', 2, Orientation.HORIZONTAL, new Position(2, 0));
+        int de=hasard();
+        String file=file(de);
+        Car redCar=carJson(1,file);
+        //Car redCar = new Car('1', 2, Orientation.HORIZONTAL, new Position(2, 0));
         List<Car> list = new ArrayList<>();
-        list.add(new Car('2', 2, Orientation.HORIZONTAL, new Position(0, 0)));
-        list.add(new Car('3', 3, Orientation.VERTICAL, new Position(2, 3)));
-        list.add(new Car('4', 2, Orientation.VERTICAL, new Position(0, 5)));
-        list.add(new Car('5', 3, Orientation.VERTICAL, new Position(1, 4)));
-        list.add(new Car('6', 2, Orientation.HORIZONTAL, new Position(4, 4)));
-        list.add(new Car('7', 2, Orientation.VERTICAL, new Position(3, 1)));
+        list.add(carJson(2,file));
+        list.add(carJson(3,file));
+        list.add(carJson(4,file));
+        list.add(carJson(5,file));
+        list.add(carJson(6,file));
+        list.add(carJson(7,file));
+        /*list.add(carJson(8,file));
+        list.add(carJson(9,file));
+        list.add(carJson(10,file));*/
         RushHourGame game = new RushHourGame(6, 6,
                 new Position(redCar.getCurrentPosition().getRow(), 5), list, redCar);
         RushHourView gameView = new RushHourView(game);
         gameView.play();
-
+      
     }
 
 }

@@ -11,14 +11,14 @@ public class Color {
         String car = Character.toString(a);
 
         switch (car) {
-            case "1":
+            case "1": case "8":
                 car = toRed("1");
 
                 break;
-            case "2":
+            case "2": case "9":
                 car = toGreen("2");
                 break;
-            case "3":
+            case "3": case "10":
                 car = toBlue("3");
                 break;
             case "4":
@@ -32,9 +32,6 @@ public class Color {
                 break;
             case "7":
                 car = toBlack("7");
-                break;
-            case "8":
-                car = toWhite("7");
                 break;
         }
 

@@ -60,16 +60,16 @@ public class Position {
         // modification ot the coordinates of the direction
         switch (direction) {
             case LEFT:
-                tempColumn -= 1;    // exemple: (2,1) become (2,0)
+                tempColumn -= 1;    // example: (2,1) become (2,0)
                 break;
             case RIGHT:
-                tempColumn += 1;    // exemple: (2,1) become (2,2)
+                tempColumn += 1;    // example: (2,1) become (2,2)
                 break;
             case UP:
-                tempRow -= 1;       // exemple: (2,1) become (3,1) 
+                tempRow -= 1;       // example: (2,1) become (3,1) 
                 break;
             case DOWN:
-                tempRow += 1;       // exemple: (2,1) become (3,1)
+                tempRow += 1;       // example: (2,1) become (3,1)
                 break;
         }
         return new Position(tempRow, tempColumn);
