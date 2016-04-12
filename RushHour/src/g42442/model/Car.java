@@ -27,7 +27,7 @@ public class Car {
      */
     public Car(char id, int size, Orientation orientation, Position position) {
         if (size <= 0) {
-            throw new IllegalArgumentException("invalid size! ");
+            throw new IllegalArgumentException("invalid size of the car! ");
         }
         this.id = id;
         this.size = size;
@@ -64,9 +64,9 @@ public class Car {
      */
     @Override
     public String toString() {
-        return "la voiture " + this.id + " de taille " + this.size
-                + " d'orientation " + this.orientation
-                + " est en position" + this.currentPosition;
+        return "the car " + this.id + " with size " + this.size
+                + ", orientation " + this.orientation
+                + " and position" + this.currentPosition;
     }
 
     /**
@@ -79,26 +79,26 @@ public class Car {
         switch (direction) {
             case LEFT:
                 if (this.orientation != Orientation.HORIZONTAL) {
-                    throw new IllegalArgumentException(toRed("this movement"
+                    throw new IllegalArgumentException(toRed("car this movement"
                             + " is not allowed!!! "));
                 }
 
                 break;
             case RIGHT:
                 if (this.orientation != Orientation.HORIZONTAL) {
-                    throw new IllegalArgumentException(toRed("this movement"
+                    throw new IllegalArgumentException(toRed("car this movement"
                             + " is not allowed!!! "));
                 }
                 break;
             case UP:
                 if (this.orientation != Orientation.VERTICAL) {
-                    throw new IllegalArgumentException(toRed("this movement"
+                    throw new IllegalArgumentException(toRed("car this movement"
                             + " is not allowed!!! "));
                 }
                 break;
             case DOWN:
                 if (this.orientation != Orientation.VERTICAL) {
-                    throw new IllegalArgumentException(toRed("this movement"
+                    throw new IllegalArgumentException(toRed("car this movement"
                             + " is not allowed!!! "));
                 }
                 break;
@@ -136,6 +136,29 @@ public class Car {
      */
     public boolean equalsName(Car car2) {
         return this.id == car2.getId();
+    }
+
+    /**
+     * check if the orientation and the direction are compatible to move the car
+     *
+     * @param direction the direction in which the car should move
+     * @return if the oriention of the car is compatible with the direction
+     */
+    public boolean movCoherent(Direction direction) {
+        boolean coherent = true;
+
+        if (direction == Direction.LEFT
+                && this.orientation != Orientation.HORIZONTAL
+                || direction == Direction.RIGHT
+                && this.orientation != Orientation.HORIZONTAL
+                || direction == Direction.UP
+                && this.orientation != Orientation.VERTICAL
+                || direction == Direction.DOWN
+                && this.orientation != Orientation.VERTICAL) {
+            coherent = false;
+
+        }
+        return coherent;
     }
 
 }

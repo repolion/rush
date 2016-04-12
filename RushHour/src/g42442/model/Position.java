@@ -48,6 +48,7 @@ public class Position {
 
     /**
      * to know the position next to the car
+     *
      * @param direction defines the direction in which the position will be
      * moved
      * @return a new position representing the position adjacent to the current
@@ -56,7 +57,7 @@ public class Position {
     public Position getPosition(Direction direction) {
         int tempRow = this.row;
         int tempColumn = this.column;
-        // modification ot the coordinate function of the direction
+        // modification ot the coordinates of the direction
         switch (direction) {
             case LEFT:
                 tempColumn -= 1;    // exemple: (2,1) become (2,0)
@@ -76,8 +77,9 @@ public class Position {
     }
 
     /**
-     * method boolean equals o(Object o) redefined allows my class Test to 
-     * test "the egality"of 2 positions attributes
+     * method boolean equals o(Object o) redefined allows my class Test to test
+     * "the egality"of 2 positions attributes
+     *
      * @param o a Position
      * @return true if the parameters of the two positions are equal
      */

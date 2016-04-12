@@ -1,12 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package g42442.view;
 
 public class Color {
 
+    /**
+     *
+     * @param a the char to be converted in String
+     * @return the char converted
+     */
     public static String color(char a) {
         String car = Character.toString(a);
 
@@ -42,89 +42,89 @@ public class Color {
     }
 
     /**
-     * Méthode de couleur default du BASH.
+     * method default color from the BASH.
      *
-     * @return La couleur default.
+     * @return color default.
      */
     private static String toDefault() {
         return "\033[0m";
     }
 
     /**
-     * Colorie une chaine en noir.
+     * to color a String in black.
      *
-     * @param a La chaine à colorer.
-     * @return La chaine colorée.
+     * @param a the String to be colored.
+     * @return the String colored.
      */
     public static String toBlack(String a) {
         return "\033[30m" + a + toDefault();
     }
 
     /**
-     * Colorie une chaine en rouge.
+     * to color a String in red.
      *
-     * @param a La chaine à colorer.
-     * @return La chaine colorée.
+     * @param a the String to be colored.
+     * @return the String colored.
      */
     public static String toRed(String a) {
         return "\033[31m" + a + toDefault();
     }
 
     /**
-     * Colorie une chaine en vert.
+     * to color a String in green.
      *
-     * @param a La chaine à colorer.
-     * @return La chaine colorée.
+     * @param a the String to be colored.
+     * @return the String colored.
      */
     public static String toGreen(String a) {
         return "\033[32m" + a + toDefault();
     }
 
     /**
-     * Colorie une chaine en jaune.
+     * to color a String in yellow.
      *
-     * @param a La chaine à colorer.
-     * @return La chaine colorée.
+     * @param a the String to be colored.
+     * @return the String colored.
      */
     public static String toYellow(String a) {
         return "\033[33m" + a + toDefault();
     }
 
     /**
-     * Colorie une chaine en bleu.
+     * to color a String in blue.
      *
-     * @param a La chaine à colorer.
-     * @return La chaine colorée.
+     * @param a the String to be colored.
+     * @return the String colored.
      */
     public static String toBlue(String a) {
         return "\033[34m" + a + toDefault();
     }
 
     /**
-     * Colorie une chaine en mauve.
+     * to color a String in purple.
      *
-     * @param a La chaine à colorer.
-     * @return La chaine colorée.
+     * @param a the String to be colored.
+     * @return the String colored.
      */
     public static String toPurple(String a) {
         return "\033[35m" + a + toDefault();
     }
 
     /**
-     * Colorie une chaine en cyan.
+     * to color a String in cyan.
      *
-     * @param a La chaine à colorer.
-     * @return La chaine colorée.
+     * @param a the String to be colored.
+     * @return the String colored.
      */
     public static String toCyan(String a) {
         return "\033[36m" + a + toDefault();
     }
 
     /**
-     * Colorie une chaine en blanc.
+     * to color a String in white.
      *
-     * @param a La chaine à colorer.
-     * @return La chaine colorée.
+     * @param a the String to be colored.
+     * @return the String colored.
      */
     public static String toWhite(String a) {
         return "\033[37m" + a + toDefault();

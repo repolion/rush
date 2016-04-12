@@ -20,20 +20,20 @@ public class Board {
      * @param row number of row
      * @param column number of column
      * @param exit the position of the exit
-     * @throws RushHourException used when size parameters of the board or a
-     * wrong position of the exit
+     * @throws IllegalArgumentException used when size parameters of the board
+     * or a wrong position of the exit
      */
-    public Board(int row, int column, Position exit) throws RushHourException {
+    public Board(int row, int column, Position exit) {
         if (row <= 0 || column <= 0) {
-            throw new RushHourException(toBlue("Les paramètres de taille "
-                    + "du plateau ne sont pas valides! "));
+            throw new IllegalArgumentException(toBlue("board size settings "
+                    + "are invalid! "));
         }
         this.grid = new Car[row][column];
 
         if (exit.getColumn() != column - 1
                 || exit.getRow() > row - 1 || exit.getRow() < 0) {
-            throw new RushHourException(toBlue("Les paramètres de position de "
-                    + "la sortie ne sont pas acceptables"));
+            throw new IllegalArgumentException(toBlue("the exit position "
+                    + "parameters are not valid"));
         }
         this.exit = exit;
     }
@@ -92,7 +92,7 @@ public class Board {
         boolean isInBoard = true;
         boolean parkingFree = true;
         int i = 0;
-        while (i < posCar.size() && isInBoard == true) {
+        while (i < posCar.size() && isInBoard) {
 
             if (posCar.get(i).getRow() < 0 || posCar.get(i).getColumn() < 0
                     || posCar.get(i).getColumn() >= this.getWidth()
@@ -103,7 +103,7 @@ public class Board {
             ++i;
         }
         i = 0;
-        while (i < posCar.size() && isInBoard == true && parkingFree) {
+        while (i < posCar.size() && isInBoard && parkingFree) {
             parkingFree = this.isFree(posCar.get(i));
             ++i;
         }
@@ -169,28 +169,27 @@ public class Board {
         boolean canMove = false;
         Position positionExt;
         Position positionTest;
-
-        switch (direction) {
-            case LEFT:
-            case UP:
-                positionExt = listePositions.get(0);
-                positionTest = positionExt.getPosition(direction);
-                if (this.isOnTheBoard(positionTest)
-                        == true && this.isFree(positionTest)) {
-                    canMove = true;
-                }
-                break;
-
-            case RIGHT:
-            case DOWN:
-                positionExt = listePositions.get(listePositions.size() - 1);
-                positionTest = positionExt.getPosition(direction);
-                if (this.isOnTheBoard(positionTest)
-                        == true && this.isFree(positionTest)) {
-                    canMove = true;
-                }
-                break;
-
+        if (car.movCoherent(direction)) {
+            switch (direction) {
+                case LEFT:
+                case UP:
+                    positionExt = listePositions.get(0);
+                    positionTest = positionExt.getPosition(direction);
+                    if (this.isOnTheBoard(positionTest)
+                            && this.isFree(positionTest)) {
+                        canMove = true;
+                    }
+                    break;
+                case RIGHT:
+                case DOWN:
+                    positionExt = listePositions.get(listePositions.size() - 1);
+                    positionTest = positionExt.getPosition(direction);
+                    if (this.isOnTheBoard(positionTest)
+                            && this.isFree(positionTest)) {
+                        canMove = true;
+                    }
+                    break;
+            }
         }
         return canMove;
     }

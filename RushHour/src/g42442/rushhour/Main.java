@@ -19,7 +19,7 @@ public class Main {
         Car redCar = new Car('1', 2, Orientation.HORIZONTAL, new Position(2, 0));
         List<Car> list = new ArrayList<>();
         list.add(new Car('2', 2, Orientation.HORIZONTAL, new Position(0, 0)));
-        list.add(new Car('3', 3, Orientation.VERTICAL, new Position(3, 3)));
+        list.add(new Car('3', 3, Orientation.VERTICAL, new Position(2, 3)));
         list.add(new Car('4', 2, Orientation.VERTICAL, new Position(0, 5)));
         list.add(new Car('5', 3, Orientation.VERTICAL, new Position(1, 4)));
         list.add(new Car('6', 2, Orientation.HORIZONTAL, new Position(4, 4)));

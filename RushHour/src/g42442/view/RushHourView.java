@@ -1,8 +1,10 @@
 package g42442.view;
 
 import g42442.model.Direction;
+import g42442.model.RushHourException;
 import java.util.Scanner;
 import g42442.model.RushHourGame;
+import static g42442.view.Color.toBlue;
 import static g42442.view.Color.toRed;
 import static g42442.view.Display.displayBoard;
 import static g42442.view.Display.gameOver;
@@ -15,27 +17,27 @@ public class RushHourView {
 
     private static final Scanner in = new Scanner(System.in);
 
-    //Attribut
+    //instance attributes
     private RushHourGame game;
 
-    //constructeur
+    //constructor
     public RushHourView(RushHourGame game) {
         this.game = game;
     }
 
-    //Méthode
-    public void play() {
+    //others methods
+    public void play(){
         char carId;
         char direction;
         Display.displayBoard(game.getBoard());
         while (!game.isOver()) {
             try {
-            carId = askId("Enter the id of the car you would like to move: ");
-            direction = askDirection("Enter the direction: l(Left),u(UP),"
-                    + " d(DOWN), r(RIGHT) ");
+            carId = askId(toBlue("Enter the id of the car you would like to move: "));
+            direction = askDirection(toBlue("Enter the direction: l(Left),u(UP),"
+                    + " d(DOWN), r(RIGHT) "));
             
                 game.move(carId, convert(direction));
-            } catch (IllegalArgumentException e) {
+            } catch (RushHourException e) {
                 System.out.println(e.getMessage());
             }
 
@@ -62,7 +64,7 @@ public class RushHourView {
                 dir = Direction.DOWN;
                 break;
             default:
-                System.out.println("This is not a valid direction ");
+                System.out.println("Default: This is not a valid direction ");
         }
         return dir;
     }

@@ -3,6 +3,8 @@ package g42442.view;
 import g42442.model.Position;
 import g42442.model.Board;
 import static g42442.view.Color.color;
+import static g42442.view.Color.toBlue;
+import static g42442.view.Color.toRed;
 
 /**
  *
@@ -23,7 +25,8 @@ public class Display {
                 for (int j = 0; j < board.getWidth(); ++j) {
                     if (board.getCarAt(new Position(i, j)) != null) {
                         for (int x = 0; x < 3; ++x) {
-                            System.out.print(color(board.getCarAt(new Position(i, j)).getId()) + " ");
+                            System.out.print(color(board.getCarAt(
+                                    new Position(i, j)).getId()) + " ");
                         }
                     } else {
                         for (int x = 0; x < 3; ++x) {
@@ -34,7 +37,7 @@ public class Display {
                 }
 
                 if (i == board.getExit().getRow()) {
-                    System.out.print("x");
+                    System.out.print(toRed("x"));
                 } else {
                     System.out.print("|");
                 }
@@ -52,13 +55,20 @@ public class Display {
 
     public static void gameOver() {
 
-        System.out.println("   _____              __  __   ______      ____   __      __  ______   _____  \n"
-                + "  / ____|     /\\     |  \\/  | |  ____|    / __ \\  \\ \\    / / |  ____| |  __ \\ \n"
-                + " | |  __     /  \\    | \\  / | | |__      | |  | |  \\ \\  / /  | |__    | |__) |\n"
-                + " | | |_ |   / /\\ \\   | |\\/| | |  __|     | |  | |   \\ \\/ /   |  __|   |  _  / \n"
-                + " | |__| |  / ____ \\  | |  | | | |____    | |__| |    \\  /    | |____  | | \\ \\ \n"
-                + "  \\_____| /_/    \\_\\ |_|  |_| |______|    \\____/      \\/     |______| |_|  \\_\\\n"
-                + "                                                                              ");
+        System.out.println("   _____              __  __   ______      ____ "
+                + "  __      __  ______   _____  \n"
+                + "  / ____|     /\\     |  \\/  | |  ____|    / __ \\  \\ \\  "
+                + "  / / |  ____| |  __ \\ \n"
+                + " | |  __     /  \\    | \\  / | | |__      | |  | |  \\ \\ "
+                + " / /  | |__    | |__) |\n"
+                + " | | |_ |   / /\\ \\   | |\\/| | |  __|     | |  | |   \\ \\"
+                + "/ /   |  __|   |  _  / \n"
+                + " | |__| |  / ____ \\  | |  | | | |____    | |__| |    \\  / "
+                + "   | |____  | | \\ \\ \n"
+                + "  \\_____| /_/    \\_\\ |_|  |_| |______|    \\____/      \\"
+                + "/     |______| |_|  \\_\\\n"
+                + "                                                           "
+                + "                   ");
 
     }
 
