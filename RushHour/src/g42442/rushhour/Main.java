@@ -8,6 +8,7 @@ import java.util.List;
 import g42442.model.RushHourGame;
 import static g42442.view.Json.carJson;
 import static g42442.view.Json.hasard;
+import static g42442.view.Json.howManyCarsToPut;
 import g42442.view.RushHourView;
 
 /**
@@ -18,11 +19,10 @@ public class Main {
 
     public static void main(String[] args) throws RushHourException {
         int dice = hasard(3);
-      //  String file = file(dice);
+        int howManyCarToPut=howManyCarsToPut(dice);
         Car redCar = carJson(1,dice);
-        //Car redCar = new Car('1', 2, Orientation.HORIZONTAL, new Position(2, 0));
         List<Car> list = new ArrayList<>();
-        for (int i = 2; i < 8; ++i) {
+        for (int i = 2; i <= howManyCarToPut; ++i) {
             list.add(carJson(i,dice));
         }
         RushHourGame game = new RushHourGame(6, 6,

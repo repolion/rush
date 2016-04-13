@@ -19,7 +19,8 @@ public class Json {
      * @param dice the Json file to be read
      * @return a Car
      */
-    public static Car carJson(int number, int dice) {
+    public static Car carJson(int number,int dice) {
+        
         JSONParser parser = new JSONParser();
         Car car = new Car('0', 1, Orientation.HORIZONTAL, new Position(0, 0));
         try {
@@ -46,6 +47,27 @@ public class Json {
         }
         return car;
     }
+    public static int howManyCarsToPut(int dice) {
+        
+        JSONParser parser = new JSONParser();
+        int cars=0;
+        try {
+
+            Object obj = parser.parse(new FileReader(
+                    "file" + dice + ".txt"));
+
+            JSONObject jsonObject = (JSONObject) obj;
+            String nbCars = (String) jsonObject.get("cars");
+            cars = Integer.parseInt(nbCars);
+            
+
+        } catch (IOException | ParseException e) {
+            System.out.println("the file can't be read!");
+            System.exit(-1);
+        }
+        return cars;
+    }
+    
 
     /**
      *

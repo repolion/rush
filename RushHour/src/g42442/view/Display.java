@@ -3,7 +3,6 @@ package g42442.view;
 import g42442.model.Position;
 import g42442.model.Board;
 import static g42442.view.Color.color;
-import static g42442.view.Color.toBlue;
 import static g42442.view.Color.toRed;
 
 /**
