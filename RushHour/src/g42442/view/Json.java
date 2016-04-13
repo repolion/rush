@@ -13,35 +13,45 @@ import org.json.simple.parser.ParseException;
  * @author Cordier Olivier
  */
 public class Json {
-
-    public static Car carJson(int number, String file) {
+    /**
+     * to implement a Car read in a Json file
+     * @param number the id of the Car to be read in Json file
+     * @param dice the Json file to be read
+     * @return a Car
+     */
+    public static Car carJson(int number, int dice) {
         JSONParser parser = new JSONParser();
         Car car = new Car('0', 1, Orientation.HORIZONTAL, new Position(0, 0));
         try {
 
             Object obj = parser.parse(new FileReader(
-                    file + ".txt"));
+                    "file" + dice + ".txt"));
 
             JSONObject jsonObject = (JSONObject) obj;
-                    String id1 = (String) jsonObject.get("id"+number);
-                    String size1 = (String) jsonObject.get("size"+number);
-                    String orientation1 = (String) jsonObject.get("orientation"+number);
-                    String x1 = (String) jsonObject.get("x"+number);
-                    String y1 = (String) jsonObject.get("y"+number);
-                    char id1c = id1.charAt(0);
-                    int size1c = Integer.parseInt(size1);
-                    Orientation orientation1c = conv(orientation1);
-                    int x1c = Integer.parseInt(x1);
-                    int y1c = Integer.parseInt(y1);
-                    car = new Car(id1c, size1c, orientation1c, new Position(x1c, y1c));
-             
+            String id = (String) jsonObject.get("id" + number);
+            String size = (String) jsonObject.get("size" + number);
+            String orientation = (String) jsonObject.get("orientation" + number);
+            String x = (String) jsonObject.get("x" + number);
+            String y = (String) jsonObject.get("y" + number);
+            char idc = id.charAt(0);
+            int sizec = Integer.parseInt(size);
+            Orientation orientationc = conv(orientation);
+            int xc = Integer.parseInt(x);
+            int yc = Integer.parseInt(y);
+            car = new Car(idc, sizec, orientationc, new Position(xc, yc));
+
         } catch (IOException | ParseException e) {
-            System.out.println("Le fichier ne peut être lu!");
+            System.out.println("the file can't be read!");
             System.exit(-1);
         }
         return car;
     }
 
+    /**
+     *
+     * @param orientation to be converted in type Orientation
+     * @return an orientation 
+     */
     public static Orientation conv(String orientation) {
         Orientation ori = null;
 
@@ -57,25 +67,12 @@ public class Json {
         return ori;
     }
 
-    public static int hasard() {
-        int hasard = 1 + (int) (Math.random() * 3);
+    /**
+     * to generate a random number
+     * @return a random number
+     */
+    public static int hasard(int i){
+        int hasard = 1 + (int) (Math.random() * i);
         return hasard;
-    }
-
-    public static String file(int de) {
-        String file = "";
-        switch (de) {
-            case 1:
-                file = "file1";
-
-                break;
-            case 2:
-                file = "file2";
-                break;
-            case 3:
-                file = "file3";
-                break;
-        }
-        return file;
     }
 }
