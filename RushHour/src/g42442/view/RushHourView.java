@@ -26,16 +26,16 @@ public class RushHourView {
     }
 
     //others methods
-    public void play(){
+    public void play() {
         char carId;
         char direction;
         Display.displayBoard(game.getBoard());
         while (!game.isOver()) {
             try {
-            carId = askId(toBlue("Enter the id of the car you would like to move: "));
-            direction = askDirection(toBlue("Enter the direction: l(Left),u(UP),"
-                    + " d(DOWN), r(RIGHT) "));
-            
+                carId = askId(toBlue("Enter the id of the car you would like to move: "));
+                direction = askDirection(toBlue("Enter the direction: l(Left),u(UP),"
+                        + " d(DOWN), r(RIGHT) "));
+
                 game.move(carId, convert(direction));
             } catch (RushHourException e) {
                 System.out.println(e.getMessage());

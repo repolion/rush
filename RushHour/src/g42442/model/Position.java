@@ -1,7 +1,7 @@
 package g42442.model;
 
 /**
- * Position of the car on the board
+ * Position of the car, not necessarily on the board
  *
  * @author Cordier Olivier
  */

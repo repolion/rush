@@ -4,6 +4,7 @@ import static g42442.view.Color.*;
 import java.util.List;
 
 /**
+ * The playing board
  *
  * @author Cordier Olivier
  */
@@ -42,8 +43,7 @@ public class Board {
      * build a board 6x6 without parameters
      */
     public Board() {
-        this.grid = new Car[6][6];
-        this.exit = new Position(2, 5);
+        this(6, 6, new Position(2, 5));
     }
 
     //getters
@@ -88,28 +88,31 @@ public class Board {
      * @return if a car can be put on a certain place or not
      */
     public boolean canPut(Car car) {
-        List<Position> posCar = car.getPositions();
+        List<Position> positionCar = car.getPositions();
         boolean isInBoard = true;
         boolean parkingFree = true;
         int i = 0;
-        while (i < posCar.size() && isInBoard) {
+        if(positionCar.size()> this.getWidth()){
+            isInBoard=false;
+        }
+        while (i < positionCar.size() && isInBoard) {
 
-            if (posCar.get(i).getRow() < 0 || posCar.get(i).getColumn() < 0
-                    || posCar.get(i).getColumn() >= this.getWidth()
-                    || posCar.get(i).getRow() >= this.getHeight()) {
+            if (positionCar.get(i).getRow() < 0 || positionCar.get(i).getColumn() < 0
+                    || positionCar.get(i).getColumn() >= this.getWidth()
+                    || positionCar.get(i).getRow() >= this.getHeight()) {
 
                 isInBoard = false;
             }
             ++i;
         }
         i = 0;
-        while (i < posCar.size() && isInBoard && parkingFree) {
-            parkingFree = this.isFree(posCar.get(i));
+        while (i < positionCar.size() && isInBoard && parkingFree) {
+            parkingFree = this.isFree(positionCar.get(i));
             ++i;
         }
         return isInBoard && parkingFree;
     }
-
+    
     /**
      * put a car at a position on the board
      *
@@ -169,7 +172,7 @@ public class Board {
         boolean canMove = false;
         Position positionExt;
         Position positionTest;
-        if (car.movCoherent(direction)) {
+        if (car.isMovCoherent(direction)) {
             switch (direction) {
                 case LEFT:
                 case UP:

@@ -1,11 +1,13 @@
 package g42442.model;
 
+import static g42442.model.Direction.*;
+import static g42442.model.Orientation.*;
 import static g42442.view.Color.toRed;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * the car on the playing board
+ * the cars on the playing board
  *
  * @author Cordier Olivier
  */
@@ -76,34 +78,16 @@ public class Car {
      * @throws IllegalArgumentException
      */
     public void move(Direction direction) {
-        switch (direction) {
-            case LEFT:
-                if (this.orientation != Orientation.HORIZONTAL) {
-                    throw new IllegalArgumentException(toRed("car this movement"
-                            + " is not allowed!!! "));
-                }
 
-                break;
-            case RIGHT:
-                if (this.orientation != Orientation.HORIZONTAL) {
-                    throw new IllegalArgumentException(toRed("car this movement"
-                            + " is not allowed!!! "));
-                }
-                break;
-            case UP:
-                if (this.orientation != Orientation.VERTICAL) {
-                    throw new IllegalArgumentException(toRed("car this movement"
-                            + " is not allowed!!! "));
-                }
-                break;
-            case DOWN:
-                if (this.orientation != Orientation.VERTICAL) {
-                    throw new IllegalArgumentException(toRed("car this movement"
-                            + " is not allowed!!! "));
-                }
-                break;
+        if ((direction == LEFT && this.orientation != HORIZONTAL)
+                || (direction == RIGHT && this.orientation != HORIZONTAL)
+                || (direction == UP && this.orientation != VERTICAL)
+                || (direction == DOWN && this.orientation != VERTICAL)) {
+            throw new IllegalArgumentException(toRed("car this movement"
+                    + " is not allowed!!! "));
+        } else {
+            this.currentPosition = this.currentPosition.getPosition(direction);
         }
-        this.currentPosition = this.currentPosition.getPosition(direction);
 
     }
 
@@ -114,15 +98,15 @@ public class Car {
     public List<Position> getPositions() {
         List<Position> positions = new ArrayList<>();
         Position temp = this.currentPosition;
-        if (this.orientation == Orientation.HORIZONTAL) {
+        if (this.orientation == HORIZONTAL) {
             for (int i = 1; i <= size; ++i) {
                 positions.add(temp);
-                temp = temp.getPosition(Direction.RIGHT);
+                temp = temp.getPosition(RIGHT);
             }
         } else {
             for (int i = 1; i <= size; ++i) {
                 positions.add(temp);
-                temp = temp.getPosition(Direction.DOWN);
+                temp = temp.getPosition(DOWN);
             }
         }
         return positions;
@@ -144,17 +128,17 @@ public class Car {
      * @param direction the direction in which the car should move
      * @return if the oriention of the car is compatible with the direction
      */
-    public boolean movCoherent(Direction direction) {
+    public boolean isMovCoherent(Direction direction) {
         boolean coherent = true;
 
         if (direction == Direction.LEFT
-                && this.orientation != Orientation.HORIZONTAL
+                && this.orientation != HORIZONTAL
                 || direction == Direction.RIGHT
-                && this.orientation != Orientation.HORIZONTAL
+                && this.orientation != HORIZONTAL
                 || direction == Direction.UP
-                && this.orientation != Orientation.VERTICAL
-                || direction == Direction.DOWN
-                && this.orientation != Orientation.VERTICAL) {
+                && this.orientation != VERTICAL
+                || direction == DOWN
+                && this.orientation != VERTICAL) {
             coherent = false;
 
         }

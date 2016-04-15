@@ -1,8 +1,14 @@
 package g42442.view;
 
+/**
+ * to use colors
+ *
+ * @author Cordier Olivier
+ */
 public class Color {
 
     /**
+     * to color a char converting it in String
      *
      * @param a the char to be converted in String
      * @return the char converted

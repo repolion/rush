@@ -6,11 +6,17 @@ import static g42442.view.Color.color;
 import static g42442.view.Color.toRed;
 
 /**
+ * class to Display the board game
  *
  * @author Cordier Olivier
  */
 public class Display {
 
+    /**
+     * to display the board
+     *
+     * @param board the board to display
+     */
     static void displayBoard(Board board) {
         System.out.print(" ");
         for (int i = 0; i < board.getHeight() * 3; ++i) {
@@ -52,6 +58,9 @@ public class Display {
 
     }
 
+    /**
+     * to Diplay a ASCII Art GAME OVER
+     */
     public static void gameOver() {
 
         System.out.println("   _____              __  __   ______      ____ "
