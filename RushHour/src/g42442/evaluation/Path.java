@@ -44,7 +44,7 @@ public class Path {
     public boolean isStationary() {
         int compteur = 1;
         if (stepsNumber() >= 14) {
-            Position tempPosition = positions.get(positions.size()-1);
+            Position tempPosition = positions.get(positions.size() - 1);
 
             boolean areEquals = true;
             int i = positions.size() - 1;
