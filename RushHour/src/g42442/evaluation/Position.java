@@ -22,6 +22,8 @@ public class Position {
         this.longitude = longitude;
         this.latitude = latitude;
         this.elevation = elevation;
+        //@pbt généralement, on teste la validité avant d'initialiser les 
+        // attributs
         if (elevation < 0) {
             throw new IllegalArgumentException("the elevation can't be negative! ");
         }

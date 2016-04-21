@@ -54,6 +54,7 @@ public class Path {
                 } else {
                     areEquals = false;
                 }
+                //@pbt on préfèrera i--
                 i -= 1;
             }
         }

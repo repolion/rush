@@ -1,5 +1,7 @@
 package g42442.evaluation;
 
+//@pbt s/mainTest/MainTest
+
 /**
  *
  * @author Cordier Olivier
