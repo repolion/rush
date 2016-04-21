@@ -10,6 +10,8 @@ import java.util.List;
  */
 public class RushHourGame {
 
+    //@pbt pourquoi donnes-tu une visibilité package à Board ? 
+    
     //instance attributes
     Board board;
     private Car redCar;

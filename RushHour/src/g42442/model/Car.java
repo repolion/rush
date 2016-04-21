@@ -112,6 +112,8 @@ public class Car {
         return positions;
     }
 
+    //@pbt ces méthodes ne doivent pas être publiques
+    
     /**
      * to know if two differents car has the same id
      *

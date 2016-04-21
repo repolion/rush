@@ -15,6 +15,8 @@ public class Color {
      */
     public static String color(char a) {
         String car = Character.toString(a);
+        
+        //@pbt tu peux faire plus élégament avec un String[]
 
         switch (car) {
             case "1":

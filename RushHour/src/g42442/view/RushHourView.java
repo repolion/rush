@@ -15,6 +15,8 @@ import static g42442.view.Display.gameOver;
  */
 public class RushHourView {
 
+    //@pbt je ne vois pas de javadoc pour les méchodes public
+    
     private static final Scanner in = new Scanner(System.in);
 
     //instance attributes
@@ -32,7 +34,10 @@ public class RushHourView {
         Display.displayBoard(game.getBoard());
         while (!game.isOver()) {
             try {
+                //@pbt ligne trop longue
                 carId = askId(toBlue("Enter the id of the car you would like to move: "));
+                //@pbt comme direction n'est pas une direction, tu peux 
+                //l'appeler par exemple charDirection
                 direction = askDirection(toBlue("Enter the direction: l(Left),u(UP),"
                         + " d(DOWN), r(RIGHT) "));
 
@@ -71,6 +76,7 @@ public class RushHourView {
 
     private static char askId(String msg) {
         System.out.println(msg);
+        //@pbt dans ce cas, privilégie un do while
         char id = in.next().charAt(0);
         while (!Character.isDigit(id)) {
             System.out.println(toRed("You have entered an invalid entry."));
