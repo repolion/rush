@@ -37,7 +37,7 @@ public class Color {
                 car = toYellow("6");
                 break;
             case "7":
-                car = toBlack("7");
+                car = toPurple("7");
                 break;
             case "8":
                 car = toRed("8");
