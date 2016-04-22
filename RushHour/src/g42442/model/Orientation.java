@@ -1,7 +1,7 @@
 package g42442.model;
 
 /**
- * Enumerations Orientation are the possible Orientation possible for the CARS
+ * Enumerations Orientation are the possible Orientation for the CARS
  *
  * @author Cordier Olivier
  */
