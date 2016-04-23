@@ -10,6 +10,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 
+
 /**
  * to read cars informations in a JSON file
  *
@@ -29,10 +30,12 @@ public class Json {
         JSONParser parser = new JSONParser();
         Car car;
         try {
-            
+           
             Object obj = parser.parse(new FileReader(
-                    "resources/file" + dice + ".txt"));
-
+                    "/resources/file" + dice + ".txt"));
+       
+           
+            
             JSONObject jsonObject = (JSONObject) obj;
             String id = (String) jsonObject.get("id" + number);
             String size = (String) jsonObject.get("size" + number);
@@ -67,7 +70,7 @@ public class Json {
         try {
 
             Object obj = parser.parse(new FileReader(
-                    "resources/file" + dice + ".txt"));
+                    "/resources/file" + dice + ".txt"));
 
             JSONObject jsonObject = (JSONObject) obj;
             String nbCars = (String) jsonObject.get("cars");
