@@ -6,9 +6,7 @@ import g42442.model.RushHourException;
 import java.util.ArrayList;
 import java.util.List;
 import g42442.model.RushHourGame;
-import static g42442.view.Json.carJson;
-import static g42442.view.Json.hasard;
-import static g42442.view.Json.howManyCarsToPut;
+import static g42442.view.Json.*;
 import g42442.view.RushHourView;
 
 /**
