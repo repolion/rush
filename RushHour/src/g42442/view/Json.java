@@ -28,9 +28,9 @@ public class Json {
         JSONParser parser = new JSONParser();
         Car car;
         try {
-
+            
             Object obj = parser.parse(new FileReader(
-                    "file" + dice + ".txt"));
+                    "resources/file" + dice + ".txt"));
 
             JSONObject jsonObject = (JSONObject) obj;
             String id = (String) jsonObject.get("id" + number);
@@ -46,7 +46,7 @@ public class Json {
             car = new Car(idc, sizec, orientationc, new Position(xc, yc));
 
         } catch (IOException | ParseException e) {
-            System.out.println("the file can't be read!");
+            System.out.println("the Json file can't be read!");
             car = null;
             System.exit(-1);
         }
@@ -66,14 +66,14 @@ public class Json {
         try {
 
             Object obj = parser.parse(new FileReader(
-                    "file" + dice + ".txt"));
+                    "resources/file" + dice + ".txt"));
 
             JSONObject jsonObject = (JSONObject) obj;
             String nbCars = (String) jsonObject.get("cars");
             cars = Integer.parseInt(nbCars);
 
         } catch (IOException | ParseException e) {
-            System.out.println("the file can't be read!");
+            System.out.println("the Json file can't be read!");
             System.exit(-1);
         }
         return cars;
