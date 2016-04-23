@@ -25,7 +25,7 @@ public class Car {
      * @param size the size of the car
      * @param orientation the orientation(HORIZONTAL-VERTICAL) of the car
      * @param position first box of the board where the car is located
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException launched when invalid size of the car
      */
     public Car(char id, int size, Orientation orientation, Position position) {
         if (size <= 0) {
@@ -75,7 +75,7 @@ public class Car {
      * Test the position of the car and if the mouvement is allowed, move it.
      *
      * @param direction of the movement car
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException launched for an illegal movement of the car
      */
     public void move(Direction direction) {
 
