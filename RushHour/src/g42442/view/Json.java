@@ -30,7 +30,7 @@ public class Json {
         try {
             
             Object obj = parser.parse(new FileReader(
-                    "resources/file" + dice + ".txt"));
+                    "resources/g42442/resources/file" + dice + ".txt"));
 
             JSONObject jsonObject = (JSONObject) obj;
             String id = (String) jsonObject.get("id" + number);
@@ -66,7 +66,7 @@ public class Json {
         try {
 
             Object obj = parser.parse(new FileReader(
-                    "resources/file" + dice + ".txt"));
+                    "resources/g42442/resources/file" + dice + ".txt"));
 
             JSONObject jsonObject = (JSONObject) obj;
             String nbCars = (String) jsonObject.get("cars");
