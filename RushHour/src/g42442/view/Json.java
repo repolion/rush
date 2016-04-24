@@ -33,7 +33,7 @@ public class Json {
         List<Car> list = new ArrayList<>();
         try {
 
-            Object obj = parser.parse(new FileReader("file" + dice + ".json"));
+            Object obj = parser.parse(new FileReader("./file" + dice + ".json"));
 
             JSONObject jsonObject = (JSONObject) obj;
             String carsNumber = (String) jsonObject.get("cars");
@@ -77,7 +77,7 @@ public class Json {
         try {
 
             Object obj = parser.parse(new FileReader(
-                    "file" + dice + ".json"));
+                    "./file" + dice + ".json"));
             JSONObject jsonObject = (JSONObject) obj;
             String id = (String) jsonObject.get("id1");
             String size = (String) jsonObject.get("size1");
@@ -147,7 +147,7 @@ public class Json {
         try {
 
             Object obj = parser.parse(new FileReader(
-                    "file" + dice + ".json"));
+                    "./file" + dice + ".json"));
 
             JSONObject jsonObject = (JSONObject) obj;
             String nbCars = (String) jsonObject.get("board");
