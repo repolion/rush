@@ -9,7 +9,6 @@ import g42442.model.RushHourGame;
 import g42442.view.RushHourView;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,14 +30,14 @@ public class Main {
         List<Car> list = new ArrayList<>();
         int sizeBoard = 6;
         Car redCar = new Car('1', 2, Orientation.HORIZONTAL, new Position(2, 0));
-        int dice = hasard(3);
-        try  {
-          
-            
-             Object obj = parser.parse(new FileReader("resources/file" + dice + ".json"));
 
-             JSONObject jsonObject = (JSONObject) obj;
-             
+        int dice = hasard(3);
+        try (InputStream in = Main.class.getResourceAsStream("file" + dice + ".json")) {
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            Object obj = parser.parse(reader);
+            JSONObject jsonObject = (JSONObject) obj;
+
             String board = (String) jsonObject.get("board");
             sizeBoard = Integer.parseInt(board);
 
