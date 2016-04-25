@@ -8,7 +8,6 @@ import java.util.List;
 import g42442.model.RushHourGame;
 import g42442.view.RushHourView;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -28,7 +27,7 @@ public class Main {
         JSONParser parser = new JSONParser();
         Car car;
         List<Car> list = new ArrayList<>();
-        int sizeBoard = 6;
+        int sizeBoard = 0;
         Car redCar = new Car('1', 2, Orientation.HORIZONTAL, new Position(2, 0));
 
         int dice = hasard(3);
@@ -63,9 +62,6 @@ public class Main {
                 }
             }
 
-        } catch (FileNotFoundException e) {
-            System.out.println("the Json file is not found!");
-            System.exit(-1);
         } catch (IOException | ParseException e) {
             System.out.println("the Json file can't be read!");
             System.exit(-1);

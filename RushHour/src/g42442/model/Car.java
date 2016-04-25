@@ -2,7 +2,6 @@ package g42442.model;
 
 import static g42442.model.Direction.*;
 import static g42442.model.Orientation.*;
-import static g42442.view.Color.toRed;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,8 +82,8 @@ public class Car {
                 || (direction == RIGHT && this.orientation != HORIZONTAL)
                 || (direction == UP && this.orientation != VERTICAL)
                 || (direction == DOWN && this.orientation != VERTICAL)) {
-            throw new IllegalArgumentException(toRed("car this movement"
-                    + " is not allowed!!! "));
+            throw new IllegalArgumentException("\033[31m" +"car this movement"
+                    + " is not allowed!!! "+"\033[0m");
         } else {
             this.currentPosition = this.currentPosition.getPosition(direction);
         }
@@ -118,7 +117,7 @@ public class Car {
      * @param car2 the car to be compared to the object Car
      * @return if the two cars has the same id
      */
-    public boolean equalsName(Car car2) {
+    protected boolean equalsName(Car car2) {
         return this.id == car2.getId();
     }
 
@@ -128,7 +127,7 @@ public class Car {
      * @param direction the direction in which the car should move
      * @return if the oriention of the car is compatible with the direction
      */
-    public boolean isMovCoherent(Direction direction) {
+    protected boolean isMovCoherent(Direction direction) {
         boolean coherent = true;
 
         if (direction == Direction.LEFT

@@ -1,6 +1,5 @@
 package g42442.model;
 
-import static g42442.view.Color.toRed;
 import java.util.List;
 
 /**
@@ -11,7 +10,7 @@ import java.util.List;
 public class RushHourGame {
 
     //instance attributes
-    Board board;
+    private Board board;
     private Car redCar;
 
     //constructor
@@ -31,21 +30,22 @@ public class RushHourGame {
         this.board = new Board(height, width, exit);
         this.redCar = redCar;
         if (redCar.getCurrentPosition().getRow() != exit.getRow()) {
-            throw new RushHourException(toRed("the exit position is not acceptable!!!"));
+            throw new RushHourException("\033[31m"
+                    + "the exit position is not acceptable!!!" + "\033[0m");
         }
         if (this.board.canPut(redCar)) {
-            this.board.putCar(redCar);            
+            this.board.putCar(redCar);
         }
-        
+
         int i = 0;
         while (i < carsList.size()) {
             if (this.board.canPut(carsList.get(i))) {
                 this.board.putCar(carsList.get(i));
-            }            
+            }
             ++i;
-            
+
         }
-        
+
     }
 
     //getter
@@ -69,15 +69,16 @@ public class RushHourGame {
     public void move(char id, Direction direction) throws RushHourException {
         Car carToMove = board.getCar(id);
         if (carToMove == null) {
-            throw new RushHourException(toRed("this identity "
-                    + "does not match with a car!!!"));
+            throw new RushHourException("\033[31m" + "this identity "
+                    + "does not match with a car!!!" + "\033[0m");
         } else if (!board.canMove(carToMove, direction)) {
-            throw new RushHourException(toRed("this movement is not allowed!!!"));
+            throw new RushHourException("\033[31m"
+                    + "this movement is not allowed!!!" + "\033[0m");
         } else {
             board.remove(carToMove);
             carToMove.move(direction);
             board.putCar(carToMove);
-            
+
         }
     }
 

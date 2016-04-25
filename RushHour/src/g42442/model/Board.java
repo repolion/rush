@@ -1,6 +1,5 @@
 package g42442.model;
 
-import static g42442.view.Color.*;
 import java.util.List;
 
 /**
@@ -26,15 +25,15 @@ public class Board {
      */
     public Board(int row, int column, Position exit) {
         if (row <= 0 || column <= 0) {
-            throw new IllegalArgumentException(toBlue("board size settings "
-                    + "are invalid! "));
+            throw new IllegalArgumentException("\033[31m" +"board size settings "
+                    + "are invalid! "+"\033[0m");
         }
         this.grid = new Car[row][column];
 
         if (exit.getColumn() != column - 1
                 || exit.getRow() > row - 1 || exit.getRow() < 0) {
-            throw new IllegalArgumentException(toBlue("the exit position "
-                    + "parameters are not valid"));
+            throw new IllegalArgumentException("\033[34m" +"the exit position "
+                    + "parameters are not valid"+"\033[0m");
         }
         this.exit = exit;
     }

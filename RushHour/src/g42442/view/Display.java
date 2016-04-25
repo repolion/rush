@@ -2,8 +2,6 @@ package g42442.view;
 
 import g42442.model.Position;
 import g42442.model.Board;
-import static g42442.view.Color.color;
-import static g42442.view.Color.toRed;
 
 /**
  * class to Display the board game
@@ -42,7 +40,7 @@ public class Display {
                 }
 
                 if (i == board.getExit().getRow()) {
-                    System.out.print(toRed("x"));
+                    System.out.print("\033[31m" + "x" + "\033[0m");
                 } else {
                     System.out.print("|");
                 }
@@ -80,4 +78,47 @@ public class Display {
 
     }
 
+    /**
+     * to color a char converting it in String
+     *
+     * @param a the char to be converted in String
+     * @return the char converted
+     */
+    public static String color(char a) {
+        String car = Character.toString(a);
+
+        switch (car) {
+            case "1":
+                car = "\033[31m" + "1" + "\033[0m";
+
+                break;
+            case "2":
+                car = "\033[32m" + "2" + "\033[0m";
+                break;
+            case "3":
+                car = "\033[34m" + "3" + "\033[0m";
+                break;
+            case "4":
+                car = "\033[35m" + "4" + "\033[0m";
+                break;
+            case "5":
+                car = "\033[36m" + "5" + "\033[0m";
+                break;
+            case "6":
+                car = "\033[33m" + "6" + "\033[0m";
+                break;
+            case "7":
+                car = "\033[35m" + "7" + "\033[0m";
+                break;
+            case "8":
+                car = "\033[31m" + "8" + "\033[0m";
+                break;
+            case "9":
+                car = "\033[32m" + "9" + "\033[0m";
+                break;
+
+        }
+
+        return car;
+    }
 }

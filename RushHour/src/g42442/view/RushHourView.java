@@ -4,10 +4,9 @@ import g42442.model.Direction;
 import g42442.model.RushHourException;
 import java.util.Scanner;
 import g42442.model.RushHourGame;
-import static g42442.view.Color.toBlue;
-import static g42442.view.Color.toRed;
 import static g42442.view.Display.displayBoard;
 import static g42442.view.Display.gameOver;
+import java.io.IOException;
 
 /**
  *
@@ -26,17 +25,22 @@ public class RushHourView {
     }
 
     //others methods
+    /**
+     * ask an id and a direction to move cars until the red one is at the exit
+     */
     public void play() {
         char carId;
-        char direction;
+        char charDirection;
         Display.displayBoard(game.getBoard());
         while (!game.isOver()) {
             try {
-                carId = askId(toBlue("Enter the id of the car you would like to move: "));
-                direction = askDirection(toBlue("Enter the direction: l(Left),u(UP),"
-                        + " d(DOWN), r(RIGHT) "));
+                carId = askId("\033[34m" + "Enter the id of "
+                        + "the car you would like to move: " + "\033[0m");
+                charDirection = askDirection("\033[34m"
+                        + "Enter the direction: l(Left),u(UP),"
+                        + " d(DOWN), r(RIGHT) " + "\033[0m");
 
-                game.move(carId, convert(direction));
+                game.move(carId, convert(charDirection));
             } catch (RushHourException e) {
                 System.out.println(e.getMessage());
             }
@@ -46,6 +50,12 @@ public class RushHourView {
         gameOver();
     }
 
+    /**
+     * convert a char given by the user in a direction
+     *
+     * @param direction the direction letter given by the user
+     * @return a direction to move a car
+     */
     public Direction convert(char direction) {
         Direction dir = null;
 
@@ -73,7 +83,8 @@ public class RushHourView {
         System.out.println(msg);
         char id = in.next().charAt(0);
         while (!Character.isDigit(id)) {
-            System.out.println(toRed("You have entered an invalid entry."));
+            System.out.println("\033[31m" + "You have entered"
+                    + " an invalid entry." + "\033[0m");
             System.out.println(msg);
             id = in.next().charAt(0);
         }
@@ -86,7 +97,8 @@ public class RushHourView {
         direction = Character.toLowerCase(direction);
         while (direction != 'l' && direction != 'r'
                 && direction != 'u' && direction != 'd') {
-            System.out.println(toRed("You have entered an invalid entry."));
+            System.out.println("\033[31m" + "You have entered"
+                    + " an invalid entry." + "\033[0m");
             System.out.println(msg);
             direction = in.next().charAt(0);
         }
