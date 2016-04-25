@@ -6,6 +6,7 @@ import g42442.model.Position;
 import g42442.model.RushHourException;
 import java.util.List;
 import g42442.model.RushHourGame;
+import static g42442.view.Display.rushHour;
 import g42442.view.RushHourView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -66,7 +67,7 @@ public class Main {
             System.out.println("the Json file can't be read!");
             System.exit(-1);
         }
-
+        rushHour();
         RushHourGame game = new RushHourGame(sizeBoard, sizeBoard,
                 new Position(redCar.getCurrentPosition().getRow(), sizeBoard - 1), list, redCar);
         RushHourView gameView = new RushHourView(game);
