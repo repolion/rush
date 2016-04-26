@@ -6,7 +6,7 @@ import g42442.model.Position;
 import g42442.model.RushHourException;
 import java.util.List;
 import g42442.model.RushHourGame;
-import static g42442.view.Display.rushHour;
+import static g42442.view.Display.*;
 import g42442.view.RushHourView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class Main {
         int sizeBoard = 0;
         Car redCar = new Car('1', 2, Orientation.HORIZONTAL, new Position(2, 0));
 
-        int dice = hasard(3);
+        int dice = hasard(7);
         try (InputStream in = Main.class.getResourceAsStream("file" + dice + ".json")) {
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -44,7 +44,7 @@ public class Main {
             String carsNumber = (String) jsonObject.get("cars");
             int carsNumberc = Integer.parseInt(carsNumber);
 
-            for (int number = 2; number <= carsNumberc; ++number) {
+            for (int number = 1; number <= carsNumberc; ++number) {
                 String id = (String) jsonObject.get("id" + number);
                 String size = (String) jsonObject.get("size" + number);
                 String orientation = (String) jsonObject.get("orientation" + number);
@@ -68,6 +68,7 @@ public class Main {
             System.exit(-1);
         }
         rushHour();
+        instructions();
         RushHourGame game = new RushHourGame(sizeBoard, sizeBoard,
                 new Position(redCar.getCurrentPosition().getRow(), sizeBoard - 1), list, redCar);
         RushHourView gameView = new RushHourView(game);
@@ -91,6 +92,9 @@ public class Main {
                 break;
             case "v":
                 ori = Orientation.VERTICAL;
+                break;
+            case "m":
+                ori = Orientation.MULTI;
                 break;
         }
         return ori;

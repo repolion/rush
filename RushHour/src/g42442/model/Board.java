@@ -25,15 +25,15 @@ public class Board {
      */
     public Board(int row, int column, Position exit) {
         if (row <= 0 || column <= 0) {
-            throw new IllegalArgumentException("\033[31m" +"board size settings "
-                    + "are invalid! "+"\033[0m");
+            throw new IllegalArgumentException("\033[31m" + "board size settings "
+                    + "are invalid! " + "\033[0m");
         }
         this.grid = new Car[row][column];
 
         if (exit.getColumn() != column - 1
                 || exit.getRow() > row - 1 || exit.getRow() < 0) {
-            throw new IllegalArgumentException("\033[34m" +"the exit position "
-                    + "parameters are not valid"+"\033[0m");
+            throw new IllegalArgumentException("\033[34m" + "the exit position "
+                    + "parameters are not valid" + "\033[0m");
         }
         this.exit = exit;
     }
@@ -91,8 +91,8 @@ public class Board {
         boolean isInBoard = true;
         boolean parkingFree = true;
         int i = 0;
-        if(positionCar.size()> this.getWidth()){
-            isInBoard=false;
+        if (positionCar.size() > this.getWidth()) {
+            isInBoard = false;
         }
         while (i < positionCar.size() && isInBoard) {
 
@@ -111,7 +111,7 @@ public class Board {
         }
         return isInBoard && parkingFree;
     }
-    
+
     /**
      * put a car at a position on the board
      *

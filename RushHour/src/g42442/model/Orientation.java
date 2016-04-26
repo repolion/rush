@@ -7,5 +7,6 @@ package g42442.model;
  */
 public enum Orientation {
 
-    HORIZONTAL, VERTICAL;
+    HORIZONTAL, VERTICAL,MULTI; 
+    // multi added to let move cars(with size =1) veticaly and horizontaly
 }

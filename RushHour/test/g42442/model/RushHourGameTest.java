@@ -36,7 +36,6 @@ public class RushHourGameTest {
     }
 
     //test if an exception is launched when we try to move an horizontal car down
-
     @Test(expected = RushHourException.class)
     public void testMove2() throws RushHourException {
         List<Car> list = new ArrayList<>();
@@ -48,7 +47,6 @@ public class RushHourGameTest {
     }
 
     //test if an exception is launched when we try to move a vertical car left
-
     @Test(expected = RushHourException.class)
     public void testMove3() throws RushHourException {
         List<Car> list = new ArrayList<>();
@@ -60,7 +58,6 @@ public class RushHourGameTest {
     }
 
     //test if an exception is launched when we try to move a vertical car right
-
     @Test(expected = RushHourException.class)
     public void testMove4() throws RushHourException {
         List<Car> list = new ArrayList<>();
@@ -72,7 +69,6 @@ public class RushHourGameTest {
     }
 
     //test if an exception is launched when the id of the car to move is not found
-
     @Test(expected = RushHourException.class)
     public void testMove5() throws RushHourException {
         List<Car> list = new ArrayList<>();
@@ -84,7 +80,6 @@ public class RushHourGameTest {
     }
 
     //test the position of a car that have been moved right
-
     @Test
     public void testMove6() throws RushHourException {
         List<Car> list = new ArrayList<>();
@@ -97,7 +92,6 @@ public class RushHourGameTest {
     }
 
     //test the position of a car that have been moved left
-
     @Test
     public void testMove7() throws RushHourException {
         List<Car> list = new ArrayList<>();
@@ -110,7 +104,6 @@ public class RushHourGameTest {
     }
 
     //test the position of a car that have been moved up
-
     @Test
     public void testMove8() throws RushHourException {
         List<Car> list = new ArrayList<>();
@@ -123,7 +116,6 @@ public class RushHourGameTest {
     }
 
     //test the position of a car that have been moved down
-
     @Test
     public void testMove9() throws RushHourException {
         List<Car> list = new ArrayList<>();
@@ -136,7 +128,6 @@ public class RushHourGameTest {
     }
 
     //test that method isOver() return true when the redCar arrive on the exit position
-
     @Test
     public void testIsOver() throws RushHourException {
         List<Car> list = new ArrayList<>();

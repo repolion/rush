@@ -6,7 +6,7 @@ import java.util.Scanner;
 import g42442.model.RushHourGame;
 import static g42442.view.Display.displayBoard;
 import static g42442.view.Display.gameOver;
-import java.io.IOException;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -79,16 +79,14 @@ public class RushHourView {
         return dir;
     }
 
-    private static char askId(String msg) {
+    private char askId(String msg) {
+        Scanner idIn = new Scanner(System.in);
         System.out.println(msg);
-        char id = in.next().charAt(0);
-        while (!Character.isDigit(id)) {
-            System.out.println("\033[31m" + "You have entered"
-                    + " an invalid entry." + "\033[0m");
-            System.out.println(msg);
-            id = in.next().charAt(0);
+        while (!idIn.hasNext(Pattern.compile("[a-zA-Z0-9]"))) {
+            System.out.print(msg);
+            idIn.next();
         }
-        return id;
+        return idIn.next().charAt(0);
     }
 
     private static char askDirection(String msg) {

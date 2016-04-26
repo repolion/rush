@@ -1,0 +1,13 @@
+{
+"cars":"9",
+"board":"7",
+"id1":"1","size1":"2","orientation1":"h","x1":"2","y1":"0",
+"id2":"2","size2":"3","orientation2":"v","x2":"0","y2":"5",
+"id3":"3","size3":"3","orientation3":"h","x3":"3","y3":"3",
+"id4":"4","size4":"3","orientation4":"v","x4":"3","y4":"2",
+"id5":"5","size5":"2","orientation5":"h","x5":"6","y5":"1",
+"id6":"6","size6":"2","orientation6":"h","x6":"4","y6":"4",
+"id7":"7","size7":"3","orientation7":"h","x7":"0","y7":"0",
+"id8":"a","size8":"4","orientation8":"h","x8":"1","y8":"0",
+"id9":"b","size9":"3","orientation9":"v","x9":"1","y9":"6"
+}

@@ -1,0 +1,11 @@
+{
+"cars":"7",
+"board":"3",
+"id1":"1","size1":"2","orientation1":"h","x1":"1","y1":"0",
+"id2":"a","size2":"1","orientation2":"m","x2":"0","y2":"1",
+"id3":"b","size3":"1","orientation3":"m","x3":"0","y3":"2",
+"id4":"c","size4":"1","orientation4":"m","x4":"2","y4":"0",
+"id5":"d","size5":"1","orientation5":"m","x5":"2","y5":"1",
+"id6":"e","size6":"1","orientation6":"m","x6":"2","y6":"2",
+"id7":"f","size7":"1","orientation7":"m","x7":"1","y7":"2"
+}

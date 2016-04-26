@@ -74,16 +74,21 @@ public class Car {
      * Test the position of the car and if the mouvement is allowed, move it.
      *
      * @param direction of the movement car
-     * @throws IllegalArgumentException launched for an illegal movement of the car
+     * @throws IllegalArgumentException launched for an illegal movement of the
+     * car
      */
     public void move(Direction direction) {
 
-        if ((direction == LEFT && this.orientation != HORIZONTAL)
-                || (direction == RIGHT && this.orientation != HORIZONTAL)
-                || (direction == UP && this.orientation != VERTICAL)
-                || (direction == DOWN && this.orientation != VERTICAL)) {
-            throw new IllegalArgumentException("\033[31m" +"car this movement"
-                    + " is not allowed!!! "+"\033[0m");
+        if ((direction == LEFT && this.orientation != HORIZONTAL
+                && this.orientation != MULTI)
+                || (direction == RIGHT && this.orientation != HORIZONTAL
+                && this.orientation != MULTI)
+                || (direction == UP && this.orientation != VERTICAL
+                && this.orientation != MULTI)
+                || (direction == DOWN && this.orientation != VERTICAL
+                && this.orientation != MULTI)) {
+            throw new IllegalArgumentException("\033[31m" + "car this movement"
+                    + " is not allowed!!! " + "\033[0m");
         } else {
             this.currentPosition = this.currentPosition.getPosition(direction);
         }
@@ -130,16 +135,15 @@ public class Car {
     protected boolean isMovCoherent(Direction direction) {
         boolean coherent = true;
 
-        if (direction == Direction.LEFT
-                && this.orientation != HORIZONTAL
-                || direction == Direction.RIGHT
-                && this.orientation != HORIZONTAL
-                || direction == Direction.UP
-                && this.orientation != VERTICAL
-                || direction == DOWN
-                && this.orientation != VERTICAL) {
+        if (direction == Direction.LEFT && this.orientation != HORIZONTAL
+                && this.orientation != MULTI
+                || direction == Direction.RIGHT && this.orientation != HORIZONTAL
+                && this.orientation != MULTI
+                || direction == Direction.UP && this.orientation != VERTICAL
+                && this.orientation != MULTI
+                || direction == DOWN && this.orientation != VERTICAL
+                && this.orientation != MULTI) {
             coherent = false;
-
         }
         return coherent;
     }

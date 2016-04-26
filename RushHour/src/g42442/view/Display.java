@@ -79,13 +79,24 @@ public class Display {
     }
 
     public static void rushHour() {
-        System.out.println("\033[34m" +".______       __    __       _______. __    __      __    __    ______    __    __  .______      \n" + "\033[0m"
+        System.out.println("\033[34m" + ".______       __    __       _______. __    __      __    __    ______    __    __  .______      \n" + "\033[0m"
                 + "\033[34m" + "|   _  \\     |  |  |  |     /       ||  |  |  |    |  |  |  |  /  __  \\  |  |  |  | |   _  \\     \n" + "\033[0m"
                 + "\033[34m" + "|  |_)  |    |  |  |  |    |   (----`|  |__|  |    |  |__|  | |  |  |  | |  |  |  | |  |_)  |    \n" + "\033[0m"
                 + "\033[34m" + "|      /     |  |  |  |     \\   \\    |   __   |    |   __   | |  |  |  | |  |  |  | |      /     \n" + "\033[0m"
                 + "\033[34m" + "|  |\\  \\----.|  `--'  | .----)   |   |  |  |  |    |  |  |  | |  `--'  | |  `--'  | |  |\\  \\----.\n" + "\033[0m"
                 + "\033[34m" + "| _| `._____| \\______/  |_______/    |__|  |__|    |__|  |__|  \\______/   \\______/  | _| `._____|\n" + "\033[0m"
                 + "\033[34m" + "                                                                                                " + "\033[0m");
+
+    }
+
+    public static void instructions() {
+        System.out.println("\033[31m" + "********************************************************************************" + "\033[0m");
+        System.out.println("\033[31m" + "*                                 INSTRUCTIONS                                 *" + "\033[0m");
+        System.out.println("\033[31m" + "* - objective of the game: put the red car in front of the exit                *" + "\033[0m");
+        System.out.println("\033[31m" + "* - the cars with a size of 1 can move in every directions                     *" + "\033[0m");
+        System.out.println("\033[31m" + "* - others cars move only according to its orientation: horizontal or vertical *" + "\033[0m");
+        System.out.println("\033[31m" + "********************************************************************************" + "\033[0m");
+        System.out.println(" ");
     }
 
     /**
@@ -125,6 +136,18 @@ public class Display {
                 break;
             case "9":
                 car = "\033[32m" + "9" + "\033[0m";
+                break;
+            case "a":
+                car = "\033[33m" + "a" + "\033[0m";
+                break;
+            case "b":
+                car = "\033[35m" + "b" + "\033[0m";
+                break;
+            case "c":
+                car = "\033[31m" + "c" + "\033[0m";
+                break;
+            case "d":
+                car = "\033[32m" + "d" + "\033[0m";
                 break;
 
         }
