@@ -36,9 +36,7 @@ public class Display {
                             System.out.print("  ");
                         }
                     }
-
                 }
-
                 if (i == board.getExit().getRow()) {
                     System.out.print("\033[31m" + "x" + "\033[0m");
                 } else {
@@ -78,6 +76,9 @@ public class Display {
 
     }
 
+    /**
+     * Display the game title
+     */
     public static void rushHour() {
         System.out.println("\033[34m" + ".______       __    __       _______. __    __      __    __    ______    __    __  .______      \n" + "\033[0m"
                 + "\033[34m" + "|   _  \\     |  |  |  |     /       ||  |  |  |    |  |  |  |  /  __  \\  |  |  |  | |   _  \\     \n" + "\033[0m"
@@ -89,6 +90,9 @@ public class Display {
 
     }
 
+    /**
+     * Display the instructions of the game
+     */
     public static void instructions() {
         System.out.println("\033[31m" + "********************************************************************************" + "\033[0m");
         System.out.println("\033[31m" + "*                                 INSTRUCTIONS                                 *" + "\033[0m");
@@ -149,9 +153,8 @@ public class Display {
             case "d":
                 car = "\033[32m" + "d" + "\033[0m";
                 break;
-
         }
-
         return car;
     }
+
 }

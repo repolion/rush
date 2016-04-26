@@ -73,7 +73,7 @@ public class Car {
     /**
      * Test the position of the car and if the mouvement is allowed, move it.
      *
-     * @param direction of the movement car
+     * @param direction the direction of the movement car
      * @throws IllegalArgumentException launched for an illegal movement of the
      * car
      */
@@ -148,7 +148,13 @@ public class Car {
         return coherent;
     }
 
-    //test
+    //add method
+    /**
+     * to move a car in a certain direction with distance choice
+     *
+     * @param direction the direction of the movement car
+     * @param moves the distance to move
+     */
     public void move(Direction direction, int moves) {
 
         if ((direction == LEFT && this.orientation != HORIZONTAL

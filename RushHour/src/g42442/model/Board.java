@@ -219,6 +219,13 @@ public class Board {
     }
 
     //Test d'une méthode howManyCanMove
+    /**
+     * to know how long the car can move
+     *
+     * @param car the car to move
+     * @param direction the direction of the car
+     * @return how long the car can move
+     */
     public int howManyCanMove(Car car, Direction direction) {
         int count = 0;
         List<Position> listePositions = car.getPositions();

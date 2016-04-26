@@ -1,6 +1,5 @@
 package g42442.model;
 
-import static g42442.view.RushHourView.askNumber;
 import java.util.List;
 
 /**
@@ -37,16 +36,13 @@ public class RushHourGame {
         if (this.board.canPut(redCar)) {
             this.board.putCar(redCar);
         }
-
         int i = 0;
         while (i < carsList.size()) {
             if (this.board.canPut(carsList.get(i))) {
                 this.board.putCar(carsList.get(i));
             }
             ++i;
-
         }
-
     }
 
     //getter
@@ -75,28 +71,34 @@ public class RushHourGame {
         } else if (!board.canMove(carToMove, direction)) {
             throw new RushHourException("\033[31m"
                     + "this movement is not allowed!!!" + "\033[0m");
-
-        } else if (board.howManyCanMove(carToMove, direction) > 1) {
-            int max = board.howManyCanMove(carToMove, direction);
-            int moves = -1;
-            while (moves < 0 || moves > max) {
-                moves = askNumber("\033[34m"
-                        + "How many places you want to move?" + "\033[0m");
-                if (moves < 0 || moves > max) {
-                    System.out.println("\033[31m" + "this movement"
-                            + " is not allowed!!! " + "\033[0m");
-                }
-            }
-
-            board.remove(carToMove);
-            carToMove.move(direction, moves);
-            board.putCar(carToMove);
         } else {
-
             board.remove(carToMove);
             carToMove.move(direction);
             board.putCar(carToMove);
+        }
+    }
 
+    /**
+     * to make a multi moves to the car
+     *
+     * @param id the id of the car
+     * @param direction direction of the car
+     * @param moves number of moves that the car have to do
+     * @throws RushHourException launched if no car found with an id or if a car
+     * can't move in a certain direction
+     */
+    public void move(char id, Direction direction, int moves) throws RushHourException {
+        Car carToMove = board.getCar(id);
+        if (carToMove == null) {
+            throw new RushHourException("\033[31m" + "this identity "
+                    + "does not match with a car!!!" + "\033[0m");
+        } else if (!board.canMove(carToMove, direction)) {
+            throw new RushHourException("\033[31m"
+                    + "this movement is not allowed!!!" + "\033[0m");
+        } else {
+            board.remove(carToMove);
+            carToMove.move(direction, moves);
+            board.putCar(carToMove);
         }
     }
 
@@ -107,5 +109,49 @@ public class RushHourGame {
      */
     public boolean isOver() {
         return board.getCarAt(board.getExit()) == redCar;
+    }
+
+    /**
+     *
+     * @param id the id of the car
+     * @param direction the direction of the car
+     * @return if the car can make multi moves or not
+     * @throws RushHourException launched if no car found with an id or if a car
+     * can't move in a certain direction
+     */
+    public boolean isMulti(char id, Direction direction) throws RushHourException {
+        boolean isMultiMoves = false;
+        Car carToMove = board.getCar(id);
+        if (carToMove == null) {
+            throw new RushHourException("\033[31m" + "this identity "
+                    + "does not match with a car!!!" + "\033[0m");
+        } else if (!board.canMove(carToMove, direction)) {
+            throw new RushHourException("\033[31m"
+                    + "this movement is not allowed!!!" + "\033[0m");
+        } else if (board.howManyCanMove(carToMove, direction) > 1) {
+            isMultiMoves = true;
+        }
+        return isMultiMoves;
+    }
+
+    /**
+     *
+     * @param carToMove the car to move
+     * @param direction the direction of movement
+     * @return the maximum number of moves that a car can do in a certain
+     * direction
+     */
+    public int maxMove(Car carToMove, Direction direction) {
+        return board.howManyCanMove(carToMove, direction);
+    }
+
+    /**
+     * to find a car with its id
+     *
+     * @param id the id of a car
+     * @return a car
+     */
+    public Car carId(char id) {
+        return this.board.getCar(id);
     }
 }

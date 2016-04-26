@@ -6,6 +6,7 @@ import java.util.Scanner;
 import g42442.model.RushHourGame;
 import static g42442.view.Display.displayBoard;
 import static g42442.view.Display.gameOver;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
@@ -29,9 +30,12 @@ public class RushHourView {
      * ask an id and a direction to move cars until the red one is at the exit
      */
     public void play() {
+        int counter = 0;
         char carId;
         char charDirection;
         Display.displayBoard(game.getBoard());
+        //begining time
+        java.util.Date uDate = new java.util.Date(System.currentTimeMillis());
         while (!game.isOver()) {
             try {
                 carId = askId("\033[34m" + "Enter the id of "
@@ -39,15 +43,45 @@ public class RushHourView {
                 charDirection = askDirection("\033[34m"
                         + "Enter the direction: l(Left),u(UP),"
                         + " d(DOWN), r(RIGHT) " + "\033[0m");
-
-                game.move(carId, convert(charDirection));
+                if (game.isMulti(carId, convert(charDirection))) {
+                    int max = game.maxMove(game.carId(carId), convert(charDirection));
+                    int moves = -1;
+                    while (moves < 0 || moves > max) {
+                        moves = askNumber("\033[34m"
+                                + "How many places you want to move?" + "\033[0m");
+                        if (moves < 0 || moves > max) {
+                            errorMessage();
+                        }
+                    }
+                    game.move(carId, convert(charDirection), moves);
+                    ++counter;
+                } else {
+                    game.move(carId, convert(charDirection));
+                    ++counter;
+                }
             } catch (RushHourException e) {
                 System.out.println(e.getMessage());
             }
 
             displayBoard(game.getBoard());
         }
+        //end of game time
+        Date dateEnd = new Date(System.currentTimeMillis());
+
         gameOver();
+        Date duration = new Date(System.currentTimeMillis());
+
+        duration.setTime(dateEnd.getTime() - uDate.getTime());
+        long seconds = duration.getTime() / 1000;
+        long min = seconds / 60;
+        seconds %= 60;
+
+        System.out.println(
+                "\033[32m"
+                + "You resolved it in " + min + " minutes " + seconds
+                + " seconds and " + counter + " moves!" + "\033[0m");
+        System.out.println(
+                " ");
     }
 
     /**
@@ -95,6 +129,12 @@ public class RushHourView {
         return idIn.next().charAt(0);
     }
 
+    /**
+     * ask an Interger to the user
+     *
+     * @param msg the message to the user
+     * @return a number asked to the user
+     */
     public static int askNumber(String msg) {
         Scanner numberIn = new Scanner(System.in);
         System.out.println(msg);
@@ -119,6 +159,14 @@ public class RushHourView {
             direction = in.next().charAt(0);
         }
         return direction;
+    }
+
+    /**
+     * Display an error message
+     */
+    public static void errorMessage() {
+        System.out.println("\033[31m" + "this movement"
+                + " is not allowed!!! " + "\033[0m");
     }
 
 }

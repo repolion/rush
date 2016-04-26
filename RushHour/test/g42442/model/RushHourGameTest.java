@@ -84,10 +84,10 @@ public class RushHourGameTest {
     public void testMove6() throws RushHourException {
         List<Car> list = new ArrayList<>();
         list.add(new Car('2', 2, HORIZONTAL, new Position(2, 3)));
-        Car redCar = new Car('1', 2, HORIZONTAL, new Position(0, 2));
+        Car redCar = new Car('1', 2, HORIZONTAL, new Position(0, 3));
         RushHourGame game = new RushHourGame(6, 6, new Position(0, 5), list, redCar);
         game.move('1', RIGHT);
-        Car carTest = new Car('3', 2, HORIZONTAL, new Position(0, 3));
+        Car carTest = new Car('3', 2, HORIZONTAL, new Position(0, 4));
         Assert.assertTrue(game.getBoard().getCar('1').getCurrentPosition().equals(carTest.getCurrentPosition()));
     }
 
@@ -96,10 +96,10 @@ public class RushHourGameTest {
     public void testMove7() throws RushHourException {
         List<Car> list = new ArrayList<>();
         list.add(new Car('2', 2, HORIZONTAL, new Position(0, 0)));
-        Car redCar = new Car('1', 2, HORIZONTAL, new Position(1, 2));
+        Car redCar = new Car('1', 2, HORIZONTAL, new Position(1, 1));
         RushHourGame game = new RushHourGame(6, 6, new Position(1, 5), list, redCar);
         game.move('1', LEFT);
-        Car carTest = new Car('3', 2, HORIZONTAL, new Position(1, 1));
+        Car carTest = new Car('3', 2, HORIZONTAL, new Position(1, 0));
         Assert.assertTrue(game.getBoard().getCar('1').getCurrentPosition().equals(carTest.getCurrentPosition()));
     }
 
@@ -107,11 +107,11 @@ public class RushHourGameTest {
     @Test
     public void testMove8() throws RushHourException {
         List<Car> list = new ArrayList<>();
-        list.add(new Car('2', 2, VERTICAL, new Position(3, 3)));
+        list.add(new Car('2', 2, VERTICAL, new Position(1, 3)));
         Car redCar = new Car('1', 2, VERTICAL, new Position(0, 2));
         RushHourGame game = new RushHourGame(6, 6, new Position(0, 5), list, redCar);
         game.move('2', UP);
-        Car carTest = new Car('3', 2, VERTICAL, new Position(2, 3));
+        Car carTest = new Car('3', 2, VERTICAL, new Position(0, 3));
         Assert.assertTrue(game.getBoard().getCar('2').getCurrentPosition().equals(carTest.getCurrentPosition()));
     }
 
