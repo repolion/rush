@@ -231,7 +231,6 @@ public class Board {
                 case UP:
                     positionExt = listePositions.get(0);
                     while (canMove == true) {
-
                         positionTest = positionExt.getPosition(direction);
                         if (!this.isOnTheBoard(positionTest)
                                 || !this.isFree(positionTest)) {
@@ -240,14 +239,12 @@ public class Board {
                             ++count;
                             positionExt = positionTest;
                         }
-
                     }
                     break;
                 case RIGHT:
                 case DOWN:
                     positionExt = listePositions.get(listePositions.size() - 1);
                     while (canMove == true) {
-
                         positionTest = positionExt.getPosition(direction);
                         if (!this.isOnTheBoard(positionTest)
                                 || !this.isFree(positionTest)) {
