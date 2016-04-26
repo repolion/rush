@@ -83,7 +83,7 @@ public class RushHourView {
         Scanner idIn = new Scanner(System.in);
         System.out.println(msg);
         while (!idIn.hasNext(Pattern.compile("[a-zA-Z0-9]"))) {
-            System.out.print(msg);
+            System.out.println(msg);
             idIn.next();
         }
         return idIn.next().charAt(0);

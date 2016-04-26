@@ -32,7 +32,7 @@ public class Main {
         Car redCar = new Car('1', 2, Orientation.HORIZONTAL, new Position(2, 0));
 
         int dice = hasard(7);
-        try (InputStream in = Main.class.getResourceAsStream("file" + dice + ".json")) {
+        try (InputStream in = Main.class.getResourceAsStream("json/file" + dice + ".json")) {
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             Object obj = parser.parse(reader);

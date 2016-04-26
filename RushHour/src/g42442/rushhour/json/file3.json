@@ -1,5 +1,5 @@
 {
-"cars":"9",
+"cars":"11",
 "board":"6",
 "id1":"1","size1":"2","orientation1":"h","x1":"2","y1":"2",
 "id2":"2","size2":"2","orientation2":"h","x2":"0","y2":"1",
@@ -9,6 +9,8 @@
 "id6":"6","size6":"2","orientation6":"h","x6":"3","y6":"0",
 "id7":"7","size7":"2","orientation7":"h","x7":"3","y7":"2",
 "id8":"8","size8":"2","orientation8":"v","x8":"4","y8":"2",
-"id9":"9","size9":"2","orientation9":"v","x9":"4","y9":"3"
+"id9":"9","size9":"2","orientation9":"v","x9":"4","y9":"3",
+"id10":"a","size10":"1","orientation10":"m","x10":"4","y10":"4",
+"id11":"b","size11":"1","orientation11":"m","x11":"4","y11":"5"
 
 }
