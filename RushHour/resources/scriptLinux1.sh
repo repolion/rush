@@ -34,7 +34,8 @@ compilation(){
 	jar -J-XX:-UseCompressedClassPointers xf RushHourProject/RushHour/resources/json-simple-1.1.1.jar
 	mv org RushHourProject/game
 	rm -Rf META-INF
-	cp RushHourProject/RushHour/src/g42442/rushhour/*.json RushHourProject/game/g42442/rushhour/json
+	mkdir RushHourProject/game/g42442/rushhour/json
+	cp RushHourProject/RushHour/src/g42442/rushhour/json/*.json RushHourProject/game/g42442/rushhour/json
 	cp RushHourProject/RushHour/MANIFEST.MF RushHourProject
 	
 	jar -J-XX:-UseCompressedClassPointers cvfm RushHourProject/rushHour.jar RushHourProject/MANIFEST.MF -C RushHourProject/game/ .
