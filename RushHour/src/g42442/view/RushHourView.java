@@ -46,6 +46,7 @@ public class RushHourView {
                 if (game.isMulti(carId, convert(charDirection))) {
                     int max = game.maxMove(game.carId(carId), convert(charDirection));
                     int moves = -1;
+
                     while (moves < 0 || moves > max) {
                         moves = askNumber("\033[34m"
                                 + "How many places you want to move?" + "\033[0m");
@@ -138,9 +139,15 @@ public class RushHourView {
     public static int askNumber(String msg) {
         Scanner numberIn = new Scanner(System.in);
         System.out.println(msg);
+        int counterError = 0;
         while (!numberIn.hasNextInt()) {
+            if (counterError == 0) {
+                System.out.println("\033[31m" + "You have entered"
+                        + " an invalid entry." + "\033[0m");
+            }
             System.out.println(msg);
             numberIn.next();
+            ++counterError;
         }
         int number = numberIn.nextInt();
 
