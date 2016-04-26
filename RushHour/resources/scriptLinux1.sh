@@ -12,7 +12,7 @@ echo " "
 REP=RushHourProject
 
 creerJavadoc(){
-	javadoc -d RushHourProject/javadoc -sourcepath RushHourProject/RushHour/src -subpackages g42442.rushhour:g42442.view:g42442.model
+	javadoc -J-XX:-UseCompressedClassPointers -d RushHourProject/javadoc -sourcepath RushHourProject/RushHour/src -subpackages g42442.rushhour:g42442.view:g42442.model
 
 }
 
@@ -26,26 +26,26 @@ creerRepEtClone(){
 compilation(){
 	echo "Compilation des fichiers..."
 
-	javac -d RushHourProject/game RushHourProject/RushHour/src/g42442/rushhour/Main.java
-	javac -d RushHourProject/game RushHourProject/RushHour/test/g42442/model/BoardTest.java   
-	javac -d RushHourProject/game RushHourProject/RushHour/test/g42442/model/CarTest.java
-	javac -d RushHourProject/game RushHourProject/RushHour/test/g42442/model/PositionTest.java
-	javac -d RushHourProject/game RushHourProject/RushHour/test/g42442/model/RushHourGameTest.java
-	jar xf RushHourProject/RushHour/resources/json-simple-1.1.1.jar
+	javac -J-XX:-UseCompressedClassPointers -d RushHourProject/game RushHourProject/RushHour/src/g42442/rushhour/Main.java
+	javac -J-XX:-UseCompressedClassPointers -d RushHourProject/game RushHourProject/RushHour/test/g42442/model/BoardTest.java   
+	javac -J-XX:-UseCompressedClassPointers -d RushHourProject/game RushHourProject/RushHour/test/g42442/model/CarTest.java
+	javac -J-XX:-UseCompressedClassPointers -d RushHourProject/game RushHourProject/RushHour/test/g42442/model/PositionTest.java
+	javac -J-XX:-UseCompressedClassPointers -d RushHourProject/game RushHourProject/RushHour/test/g42442/model/RushHourGameTest.java
+	jar -J-XX:-UseCompressedClassPointers xf RushHourProject/RushHour/resources/json-simple-1.1.1.jar
 	mv org RushHourProject/game
 	rm -Rf META-INF
 	cp RushHourProject/RushHour/src/g42442/rushhour/*.json RushHourProject/game/g42442/rushhour
 	cp RushHourProject/RushHour/MANIFEST.MF RushHourProject
 	
-	jar cvfm RushHourProject/rushHour.jar RushHourProject/MANIFEST.MF -C RushHourProject/game/ .
+	jar -J-XX:-UseCompressedClassPointers cvfm RushHourProject/rushHour.jar RushHourProject/MANIFEST.MF -C RushHourProject/game/ .
 }	
 test(){
 	echo "Test Junit … "
 
-	java org.junit.runner.JUnitCore g42442.model.BoardTest >> $REP/rushHourTestResults.txt 
-	java org.junit.runner.JUnitCore g42442.model.CarTest >> $REP/rushHourTestResults.txt
-	java org.junit.runner.JUnitCore g42442.model.PositionTest >> $REP/rushHourTestResults.txt
-	java org.junit.runner.JUnitCore g42442.model.RushHourGameTest >> $REP/rushHourTestResults.txt
+	java -XX:-UseCompressedClassPointers org.junit.runner.JUnitCore g42442.model.BoardTest >> $REP/rushHourTestResults.txt 
+	java -XX:-UseCompressedClassPointers org.junit.runner.JUnitCore g42442.model.CarTest >> $REP/rushHourTestResults.txt
+	java -XX:-UseCompressedClassPointers org.junit.runner.JUnitCore g42442.model.PositionTest >> $REP/rushHourTestResults.txt
+	java -XX:-UseCompressedClassPointers org.junit.runner.JUnitCore g42442.model.RushHourGameTest >> $REP/rushHourTestResults.txt
 	
 }
 commands(){
