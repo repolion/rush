@@ -148,4 +148,25 @@ public class Car {
         return coherent;
     }
 
+    //test
+    public void move(Direction direction, int moves) {
+
+        if ((direction == LEFT && this.orientation != HORIZONTAL
+                && this.orientation != MULTI)
+                || (direction == RIGHT && this.orientation != HORIZONTAL
+                && this.orientation != MULTI)
+                || (direction == UP && this.orientation != VERTICAL
+                && this.orientation != MULTI)
+                || (direction == DOWN && this.orientation != VERTICAL
+                && this.orientation != MULTI)) {
+            throw new IllegalArgumentException("\033[31m" + "car this movement"
+                    + " is not allowed!!! " + "\033[0m");
+        } else {
+            for (int i = 0; i < moves; ++i) {
+                this.currentPosition = this.currentPosition.getPosition(direction);
+            }
+        }
+
+    }
+
 }

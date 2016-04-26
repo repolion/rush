@@ -82,14 +82,32 @@ public class RushHourView {
     private char askId(String msg) {
         Scanner idIn = new Scanner(System.in);
         System.out.println(msg);
+        int counter = 0;
         while (!idIn.hasNext(Pattern.compile("[a-zA-Z0-9]"))) {
+            ++counter;
+            if (counter > 0) {
+                System.out.println("\033[31m" + "You have entered"
+                        + " an invalid entry." + "\033[0m");
+            }
             System.out.println(msg);
             idIn.next();
         }
         return idIn.next().charAt(0);
     }
 
-    private static char askDirection(String msg) {
+    public static int askNumber(String msg) {
+        Scanner numberIn = new Scanner(System.in);
+        System.out.println(msg);
+        while (!numberIn.hasNextInt()) {
+            System.out.println(msg);
+            numberIn.next();
+        }
+        int number = numberIn.nextInt();
+
+        return number;
+    }
+
+    private char askDirection(String msg) {
         System.out.println(msg);
         char direction = in.next().charAt(0);
         direction = Character.toLowerCase(direction);

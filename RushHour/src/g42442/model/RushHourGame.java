@@ -1,5 +1,6 @@
 package g42442.model;
 
+import static g42442.view.RushHourView.askNumber;
 import java.util.List;
 
 /**
@@ -74,7 +75,24 @@ public class RushHourGame {
         } else if (!board.canMove(carToMove, direction)) {
             throw new RushHourException("\033[31m"
                     + "this movement is not allowed!!!" + "\033[0m");
+
+        } else if (board.howManyCanMove(carToMove, direction) > 1) {
+            int max = board.howManyCanMove(carToMove, direction);
+            int moves = -1;
+            while (moves < 0 || moves > max) {
+                moves = askNumber("\033[34m"
+                        + "How many places you want to move?" + "\033[0m");
+                if (moves < 0 || moves > max) {
+                    System.out.println("\033[31m" + "this movement"
+                            + " is not allowed!!! " + "\033[0m");
+                }
+            }
+
+            board.remove(carToMove);
+            carToMove.move(direction, moves);
+            board.putCar(carToMove);
         } else {
+
             board.remove(carToMove);
             carToMove.move(direction);
             board.putCar(carToMove);

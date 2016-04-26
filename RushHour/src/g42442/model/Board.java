@@ -218,4 +218,48 @@ public class Board {
         return this.grid[position.getRow()][position.getColumn()] == null;
     }
 
+    //Test d'une méthode howManyCanMove
+    public int howManyCanMove(Car car, Direction direction) {
+        int count = 0;
+        List<Position> listePositions = car.getPositions();
+        boolean canMove = true;
+        Position positionExt;
+        Position positionTest;
+        if (car.isMovCoherent(direction)) {
+            switch (direction) {
+                case LEFT:
+                case UP:
+                    positionExt = listePositions.get(0);
+                    while (canMove == true) {
+
+                        positionTest = positionExt.getPosition(direction);
+                        if (!this.isOnTheBoard(positionTest)
+                                || !this.isFree(positionTest)) {
+                            canMove = false;
+                        } else {
+                            ++count;
+                            positionExt = positionTest;
+                        }
+
+                    }
+                    break;
+                case RIGHT:
+                case DOWN:
+                    positionExt = listePositions.get(listePositions.size() - 1);
+                    while (canMove == true) {
+
+                        positionTest = positionExt.getPosition(direction);
+                        if (!this.isOnTheBoard(positionTest)
+                                || !this.isFree(positionTest)) {
+                            canMove = false;
+                        } else {
+                            ++count;
+                            positionExt = positionTest;
+                        }
+                    }
+                    break;
+            }
+        }
+        return count;
+    }
 }
