@@ -127,6 +127,30 @@ public class RushHourGameTest {
         Assert.assertTrue(game.getBoard().getCar('2').getCurrentPosition().equals(carTest.getCurrentPosition()));
     }
 
+    //test the position of a car that have been multiMoved down 
+    @Test
+    public void testMove10() throws RushHourException {
+        List<Car> list = new ArrayList<>();
+        list.add(new Car('2', 2, VERTICAL, new Position(2, 3)));
+        Car redCar = new Car('1', 2, VERTICAL, new Position(2, 2));
+        RushHourGame game = new RushHourGame(6, 6, new Position(2, 5), list, redCar);
+        game.move('2', DOWN, 2);
+        Car carTest = new Car('3', 2, VERTICAL, new Position(4, 3));
+        Assert.assertTrue(game.getBoard().getCar('2').getCurrentPosition().equals(carTest.getCurrentPosition()));
+    }
+
+    //test the position of a car that have been multiMoved right
+    @Test
+    public void testMove11() throws RushHourException {
+        List<Car> list = new ArrayList<>();
+        list.add(new Car('2', 2, HORIZONTAL, new Position(2, 3)));
+        Car redCar = new Car('1', 2, HORIZONTAL, new Position(0, 2));
+        RushHourGame game = new RushHourGame(6, 6, new Position(0, 5), list, redCar);
+        game.move('1', RIGHT, 2);
+        Car carTest = new Car('3', 2, HORIZONTAL, new Position(0, 4));
+        Assert.assertTrue(game.getBoard().getCar('1').getCurrentPosition().equals(carTest.getCurrentPosition()));
+    }
+
     //test that method isOver() return true when the redCar arrive on the exit position
     @Test
     public void testIsOver() throws RushHourException {
@@ -136,6 +160,48 @@ public class RushHourGameTest {
         RushHourGame game = new RushHourGame(6, 6, new Position(3, 5), list, redCar);
         game.move('1', RIGHT);
         Assert.assertTrue(game.isOver());
+    }
+
+    //test that method isMulti return true if a car can make a multiMove
+    @Test
+    public void isMulti1() throws RushHourException {
+        List<Car> list = new ArrayList<>();
+        list.add(new Car('2', 2, HORIZONTAL, new Position(0, 0)));
+        Car redCar = new Car('1', 2, HORIZONTAL, new Position(2, 0));
+        RushHourGame game = new RushHourGame(6, 6, new Position(2, 5), list, redCar);
+        Assert.assertTrue(game.isMulti('1', RIGHT));
+    }
+
+    //test that method isMulti return false if a car can't make a multiMove
+    @Test
+    public void isMulti2() throws RushHourException {
+        List<Car> list = new ArrayList<>();
+        list.add(new Car('2', 2, HORIZONTAL, new Position(0, 0)));
+        Car redCar = new Car('1', 2, HORIZONTAL, new Position(3, 3));
+        RushHourGame game = new RushHourGame(6, 6, new Position(3, 5), list, redCar);
+        Assert.assertFalse(game.isMulti('1', RIGHT));
+    }
+
+    // test method maxMove returns the max number of moves a car can do
+    @Test
+    public void maxMoves1() throws RushHourException {
+        List<Car> list = new ArrayList<>();
+        list.add(new Car('2', 2, HORIZONTAL, new Position(0, 0)));
+        Car redCar = new Car('1', 2, HORIZONTAL, new Position(2, 0));
+        RushHourGame game = new RushHourGame(6, 6, new Position(2, 5), list, redCar);
+        int max = 4;
+        Assert.assertTrue(max == game.maxMove(redCar, RIGHT));
+    }
+
+    // test method maxMove returns the max number of moves a car can do
+    @Test
+    public void maxMoves2() throws RushHourException {
+        List<Car> list = new ArrayList<>();
+        list.add(new Car('2', 2, VERTICAL, new Position(1, 4)));
+        Car redCar = new Car('1', 2, VERTICAL, new Position(2, 0));
+        RushHourGame game = new RushHourGame(6, 6, new Position(2, 5), list, redCar);
+        int max = 3;
+        Assert.assertTrue(max == game.maxMove(game.carId('2'), DOWN));
     }
 
 }
