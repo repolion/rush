@@ -1,6 +1,7 @@
 package g42442.view;
 
 import g42442.model.Direction;
+import static g42442.model.Direction.*;
 import g42442.model.RushHourException;
 import java.util.Scanner;
 import g42442.model.RushHourGame;
@@ -46,7 +47,6 @@ public class RushHourView {
                 if (game.isMulti(carId, convert(charDirection))) {
                     int max = game.maxMove(game.carId(carId), convert(charDirection));
                     int moves = -1;
-
                     while (moves < 0 || moves > max) {
                         moves = askNumber("\033[34m"
                                 + "How many places you want to move?" + "\033[0m");
@@ -67,12 +67,9 @@ public class RushHourView {
             displayBoard(game.getBoard());
         }
         //end of game time
-        Date dateEnd = new Date(System.currentTimeMillis());
-
-        gameOver();
         Date duration = new Date(System.currentTimeMillis());
-
-        duration.setTime(dateEnd.getTime() - uDate.getTime());
+        gameOver();
+        duration.setTime(duration.getTime() - uDate.getTime());
         long seconds = duration.getTime() / 1000;
         long min = seconds / 60;
         seconds %= 60;
@@ -96,7 +93,7 @@ public class RushHourView {
 
         switch (direction) {
             case 'l':
-                dir = Direction.LEFT;
+                dir = LEFT;
 
                 break;
             case 'r':
@@ -115,19 +112,13 @@ public class RushHourView {
     }
 
     private char askId(String msg) {
-        Scanner idIn = new Scanner(System.in);
         System.out.println(msg);
-        int counter = 0;
-        while (!idIn.hasNext(Pattern.compile("[a-zA-Z0-9]"))) {
-            ++counter;
-            if (counter > 0) {
-                System.out.println("\033[31m" + "You have entered"
-                        + " an invalid entry." + "\033[0m");
-            }
+        while (!in.hasNext(Pattern.compile("[a-zA-Z0-9]"))) {
+            invalidEntry();
             System.out.println(msg);
-            idIn.next();
+            in.next();
         }
-        return idIn.next().charAt(0);
+        return in.next().charAt(0);
     }
 
     /**
@@ -137,19 +128,14 @@ public class RushHourView {
      * @return a number asked to the user
      */
     public static int askNumber(String msg) {
-        Scanner numberIn = new Scanner(System.in);
         System.out.println(msg);
-        int counterError = 0;
-        while (!numberIn.hasNextInt()) {
-            if (counterError == 0) {
-                System.out.println("\033[31m" + "You have entered"
-                        + " an invalid entry." + "\033[0m");
-            }
+        while (!in.hasNextInt()) {
+            invalidEntry();
             System.out.println(msg);
-            numberIn.next();
-            ++counterError;
+            in.next();
+
         }
-        int number = numberIn.nextInt();
+        int number = in.nextInt();
 
         return number;
     }
@@ -176,4 +162,12 @@ public class RushHourView {
                 + " is not allowed!!! " + "\033[0m");
     }
 
+    /**
+     * Display an invalid entry message
+     */
+    public static void invalidEntry() {
+        System.out.println("\033[31m" + "this movement"
+                + " is not allowed!!! " + "\033[0m");
+    }
+    
 }

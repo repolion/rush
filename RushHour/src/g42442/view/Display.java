@@ -114,38 +114,37 @@ public class Display {
 
         switch (car) {
             case "1":
-                car = "\033[31m" + "1" + "\033[0m";
-
+                car = "\033[31m" + "1" + "\033[0m"; //red
                 break;
             case "2":
-                car = "\033[32m" + "2" + "\033[0m";
+                car = "\033[32m" + "2" + "\033[0m"; //green
                 break;
             case "3":
-                car = "\033[34m" + "3" + "\033[0m";
+                car = "\033[34m" + "3" + "\033[0m"; //blue
                 break;
             case "4":
-                car = "\033[35m" + "4" + "\033[0m";
+                car = "\033[35m" + "4" + "\033[0m"; //purple
                 break;
             case "5":
-                car = "\033[36m" + "5" + "\033[0m";
+                car = "\033[36m" + "5" + "\033[0m"; //cyan
                 break;
             case "6":
-                car = "\033[33m" + "6" + "\033[0m";
+                car = "\033[33m" + "6" + "\033[0m"; //yellow
                 break;
             case "7":
-                car = "\033[35m" + "7" + "\033[0m";
+                car = "\033[35m" + "7" + "\033[0m"; //purple
                 break;
             case "8":
-                car = "\033[31m" + "8" + "\033[0m";
+                car = "\033[31m" + "8" + "\033[0m"; //red
                 break;
             case "9":
-                car = "\033[32m" + "9" + "\033[0m";
+                car = "\033[32m" + "9" + "\033[0m"; //green
                 break;
             case "a":
-                car = "\033[33m" + "a" + "\033[0m";
+                car = "\033[33m" + "a" + "\033[0m"; //yellow
                 break;
             case "b":
-                car = "\033[35m" + "b" + "\033[0m";
+                car = "\033[34m" + "b" + "\033[0m"; //blue
                 break;
             case "c":
                 car = "\033[31m" + "c" + "\033[0m";

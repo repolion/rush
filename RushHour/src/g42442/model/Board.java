@@ -1,5 +1,6 @@
 package g42442.model;
 
+import static g42442.model.Direction.*;
 import java.util.List;
 
 /**
@@ -95,11 +96,9 @@ public class Board {
             isInBoard = false;
         }
         while (i < positionCar.size() && isInBoard) {
-
             if (positionCar.get(i).getRow() < 0 || positionCar.get(i).getColumn() < 0
                     || positionCar.get(i).getColumn() >= this.getWidth()
                     || positionCar.get(i).getRow() >= this.getHeight()) {
-
                 isInBoard = false;
             }
             ++i;
@@ -167,33 +166,14 @@ public class Board {
      * @return if the car can move in a certain direction or not
      */
     public boolean canMove(Car car, Direction direction) {
-        List<Position> listePositions = car.getPositions();
-        boolean canMove = false;
-        Position positionExt;
-        Position positionTest;
-        if (car.isMovCoherent(direction)) {
-            switch (direction) {
-                case LEFT:
-                case UP:
-                    positionExt = listePositions.get(0);
-                    positionTest = positionExt.getPosition(direction);
-                    if (this.isOnTheBoard(positionTest)
-                            && this.isFree(positionTest)) {
-                        canMove = true;
-                    }
-                    break;
-                case RIGHT:
-                case DOWN:
-                    positionExt = listePositions.get(listePositions.size() - 1);
-                    positionTest = positionExt.getPosition(direction);
-                    if (this.isOnTheBoard(positionTest)
-                            && this.isFree(positionTest)) {
-                        canMove = true;
-                    }
-                    break;
-            }
-        }
-        return canMove;
+        Car tempCar = car;
+        Position testPosition = car.getCurrentPosition().getPosition(direction);
+        this.remove(car);
+        Car movedCar = new Car(car.getId(), car.getPositions().size(),
+                car.getOrientation(), testPosition);
+        boolean test = car.isMovCoherent(direction) && canPut(movedCar);
+        putCar(tempCar);
+        return test;
     }
 
     /**
@@ -218,7 +198,6 @@ public class Board {
         return this.grid[position.getRow()][position.getColumn()] == null;
     }
 
-    //Test d'une méthode howManyCanMove
     /**
      * to know how long the car can move
      *
@@ -231,39 +210,24 @@ public class Board {
         List<Position> listePositions = car.getPositions();
         boolean canMove = true;
         Position positionExt;
-        Position positionTest;
         if (car.isMovCoherent(direction)) {
-            switch (direction) {
-                case LEFT:
-                case UP:
-                    positionExt = listePositions.get(0);
-                    while (canMove == true) {
-                        positionTest = positionExt.getPosition(direction);
-                        if (!this.isOnTheBoard(positionTest)
-                                || !this.isFree(positionTest)) {
-                            canMove = false;
-                        } else {
-                            ++count;
-                            positionExt = positionTest;
-                        }
-                    }
-                    break;
-                case RIGHT:
-                case DOWN:
-                    positionExt = listePositions.get(listePositions.size() - 1);
-                    while (canMove == true) {
-                        positionTest = positionExt.getPosition(direction);
-                        if (!this.isOnTheBoard(positionTest)
-                                || !this.isFree(positionTest)) {
-                            canMove = false;
-                        } else {
-                            ++count;
-                            positionExt = positionTest;
-                        }
-                    }
-                    break;
+            if (direction == LEFT || direction == UP) {
+                positionExt = listePositions.get(0);
+            } else {
+                positionExt = listePositions.get(listePositions.size() - 1);
+            }
+            while (canMove == true) {
+                Position positionTest = positionExt.getPosition(direction);
+                if (!this.isOnTheBoard(positionTest)
+                        || !this.isFree(positionTest)) {
+                    canMove = false;
+                } else {
+                    ++count;
+                    positionExt = positionTest;
+                }
             }
         }
         return count;
     }
+
 }

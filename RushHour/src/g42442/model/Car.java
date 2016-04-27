@@ -172,7 +172,6 @@ public class Car {
                 this.currentPosition = this.currentPosition.getPosition(direction);
             }
         }
-
     }
 
 }

@@ -33,7 +33,6 @@ public class Main {
 
         int dice = hasard(7);
         try (InputStream in = Main.class.getResourceAsStream("json/file" + dice + ".json")) {
-
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             Object obj = parser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
@@ -110,4 +109,5 @@ public class Main {
         int hasard = 1 + (int) (Math.random() * i);
         return hasard;
     }
+
 }
