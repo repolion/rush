@@ -14,10 +14,10 @@ import g42442.view.RushHourView;
 public class Main {
 
     public static void main(String[] args) throws RushHourException {
-        
+
         rushHour();
         instructions();
-     RushHourGame game=newGame(); 
+        RushHourGame game = newGame();
         RushHourView gameView = new RushHourView(game);
         gameView.play();
 
