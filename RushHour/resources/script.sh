@@ -34,7 +34,6 @@ compilation(){
 	jar xf RushHourProject/RushHour/resources/json-simple-1.1.1.jar
 	mv org RushHourProject/game
 	rm -Rf META-INF
-	mkdir RushHourProject/game/g42442/rushhour/json
 	cp RushHourProject/RushHour/src/g42442/rushhour/json/*.json RushHourProject/game/g42442/rushhour/json
 	cp RushHourProject/RushHour/MANIFEST.MF RushHourProject
 	
