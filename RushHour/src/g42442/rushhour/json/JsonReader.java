@@ -72,7 +72,7 @@ public class JsonReader {
                 new Position(redCar.getCurrentPosition().getRow(), sizeBoard - 1), list, redCar);
 
     }
-    
+
     /**
      * to convert a String in an Orientation
      *
