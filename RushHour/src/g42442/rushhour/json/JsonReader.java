@@ -34,9 +34,7 @@ public class JsonReader {
         Car redCar = new Car('1', 2, Orientation.HORIZONTAL, new Position(2, 0));
 
         int dice = hasard(7);
-        try (InputStream in = JsonReader.class.getResourceAsStream("a"
-                + "l"
-                + "file" + dice + ".json")) {
+        try (InputStream in = JsonReader.class.getResourceAsStream("file" + dice + ".json")) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             Object obj = parser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
