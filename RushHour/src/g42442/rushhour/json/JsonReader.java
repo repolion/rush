@@ -81,7 +81,11 @@ public class JsonReader {
      */
     public static Orientation conv(String orientation) {
         Orientation ori = null;
-
+        /*
+        @pbt si tu mets  HORIZONTAL dans ton json, tu peux plus facilement 
+        faire la conversion
+        Orientation o = Orientation.valueOf(orientation);
+        */
         switch (orientation) {
             case "h":
                 ori = Orientation.HORIZONTAL;

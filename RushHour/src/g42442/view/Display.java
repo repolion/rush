@@ -21,6 +21,7 @@ public class Display {
             System.out.print("--");
         }
         System.out.println(" ");
+        //@pbt on ne voit pas super bien la taille des voitures 
 
         for (int i = 0; i < board.getHeight(); ++i) {
             for (int z = 0; z < 3; ++z) {
